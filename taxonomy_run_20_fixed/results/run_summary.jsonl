@@ -1,0 +1,20 @@
+{"instance_id": "astropy__astropy-12907", "status": "success", "error": "", "index": 1}
+{"instance_id": "astropy__astropy-13033", "status": "success", "error": "", "index": 2}
+{"instance_id": "astropy__astropy-13236", "status": "success", "error": "", "index": 3}
+{"instance_id": "astropy__astropy-13398", "status": "success", "error": "", "index": 4}
+{"instance_id": "astropy__astropy-13453", "status": "error", "error": "Command 'docker exec 0b34383a58666d8c800da2e141af18290f579694a3a12f2a8dc8d5e774d03ab4 bash -c \"pip install /assertflip && pip install hypothesis && assertflip --test-cmd 'pytest -rA' --source-dir astropy --tests-dir astropy/tests --max-attempts 10 --dataset /results/astropy__astropy-13453.json --model openai/gpt-4o-mini --phase pass_then_invert --max-generation-retries 10 --max-attempts 10 \"' returned non-zero exit status 1.", "index": 5}
+{"instance_id": "astropy__astropy-13579", "status": "success", "error": "", "index": 6}
+{"instance_id": "astropy__astropy-13977", "status": "success", "error": "", "index": 7}
+{"instance_id": "astropy__astropy-14096", "status": "success", "error": "", "index": 8}
+{"instance_id": "astropy__astropy-14182", "status": "success", "error": "", "index": 9}
+{"instance_id": "astropy__astropy-14309", "status": "success", "error": "", "index": 10}
+{"instance_id": "astropy__astropy-14365", "status": "success", "error": "", "index": 11}
+{"instance_id": "astropy__astropy-14369", "status": "success", "error": "", "index": 12}
+{"instance_id": "astropy__astropy-14508", "status": "success", "error": "", "index": 13}
+{"instance_id": "astropy__astropy-14539", "status": "success", "error": "", "index": 14}
+{"instance_id": "astropy__astropy-14598", "status": "error", "error": "Command 'docker exec 0a3090990a949a9d1ec3e154792c1b3beae2050de67c2450c0751d82f987fffd bash -c \"pip install /assertflip && pip install hypothesis && assertflip --test-cmd 'pytest -rA' --source-dir astropy --tests-dir astropy/tests --max-attempts 10 --dataset /results/astropy__astropy-14598.json --model openai/gpt-4o-mini --phase pass_then_invert --max-generation-retries 10 --max-attempts 10 \"' timed out after 3599.9999706707895 seconds", "index": 15}
+{"instance_id": "astropy__astropy-14995", "status": "success", "error": "", "index": 16}
+{"instance_id": "astropy__astropy-8872", "status": "success", "error": "", "index": 17}
+{"instance_id": "django__django-10554", "status": "success", "error": "", "index": 18}
+{"instance_id": "django__django-10880", "status": "success", "error": "", "index": 19}
+{"instance_id": "django__django-10914", "status": "success", "error": "", "index": 20}

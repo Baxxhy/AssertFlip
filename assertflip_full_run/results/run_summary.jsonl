@@ -1,0 +1,104 @@
+{"instance_id": "astropy__astropy-12907", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 1}
+{"instance_id": "astropy__astropy-13033", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 2}
+{"instance_id": "astropy__astropy-13236", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 3}
+{"instance_id": "astropy__astropy-13398", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 4}
+{"instance_id": "astropy__astropy-13453", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 5}
+{"instance_id": "astropy__astropy-13579", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 6}
+{"instance_id": "astropy__astropy-13977", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 7}
+{"instance_id": "astropy__astropy-14096", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 8}
+{"instance_id": "astropy__astropy-14182", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 9}
+{"instance_id": "astropy__astropy-14309", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 10}
+{"instance_id": "astropy__astropy-14365", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 11}
+{"instance_id": "astropy__astropy-14369", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 12}
+{"instance_id": "astropy__astropy-14508", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 13}
+{"instance_id": "astropy__astropy-14539", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 14}
+{"instance_id": "astropy__astropy-14598", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 15}
+{"instance_id": "astropy__astropy-14995", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 16}
+{"instance_id": "astropy__astropy-8872", "status": "error", "error": "UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=60)", "index": 17}
+{"instance_id": "astropy__astropy-12907", "status": "success", "error": "", "index": 1}
+{"instance_id": "astropy__astropy-13033", "status": "success", "error": "", "index": 2}
+{"instance_id": "astropy__astropy-13236", "status": "success", "error": "", "index": 3}
+{"instance_id": "astropy__astropy-13398", "status": "success", "error": "", "index": 4}
+{"instance_id": "astropy__astropy-13453", "status": "success", "error": "", "index": 5}
+{"instance_id": "astropy__astropy-13579", "status": "success", "error": "", "index": 6}
+{"instance_id": "astropy__astropy-13977", "status": "success", "error": "", "index": 7}
+{"instance_id": "astropy__astropy-14096", "status": "success", "error": "", "index": 8}
+{"instance_id": "astropy__astropy-14182", "status": "success", "error": "", "index": 9}
+{"instance_id": "astropy__astropy-14309", "status": "success", "error": "", "index": 10}
+{"instance_id": "astropy__astropy-14365", "status": "success", "error": "", "index": 11}
+{"instance_id": "astropy__astropy-14369", "status": "success", "error": "", "index": 12}
+{"instance_id": "astropy__astropy-14508", "status": "success", "error": "", "index": 13}
+{"instance_id": "astropy__astropy-14539", "status": "success", "error": "", "index": 14}
+{"instance_id": "astropy__astropy-14598", "status": "success", "error": "", "index": 15}
+{"instance_id": "astropy__astropy-14995", "status": "success", "error": "", "index": 16}
+{"instance_id": "astropy__astropy-8872", "status": "success", "error": "", "index": 17}
+{"instance_id": "django__django-10554", "status": "error", "error": "Command 'docker exec cd93050fcc11df8a3d2fdc0294646f9c55f96d08d5042a0773b10309245e297e bash -c \"sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen && export LANG=en_US.UTF-8 && export LANGUAGE=en_US:en && export LC_ALL=en_US.UTF-8 && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn /assertflip && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn hypothesis && assertflip --test-cmd './tests/runtests.py --verbosity 2 --settings=test_sqlite --parallel 1' --source-dir django --tests-dir tests --max-attempts 10 --dataset /results/django__django-10554.json --model openai/gpt-4o-mini --phase pass_then_invert --max-generation-retries 10 --max-attempts 10 \"' timed out after 3599.9999779709615 seconds", "index": 18}
+{"instance_id": "django__django-10880", "status": "success", "error": "", "index": 19}
+{"instance_id": "django__django-10914", "status": "success", "error": "", "index": 20}
+{"instance_id": "django__django-10973", "status": "success", "error": "", "index": 21}
+{"instance_id": "django__django-10999", "status": "success", "error": "", "index": 22}
+{"instance_id": "django__django-11066", "status": "success", "error": "", "index": 23}
+{"instance_id": "django__django-11087", "status": "success", "error": "", "index": 24}
+{"instance_id": "django__django-11095", "status": "success", "error": "", "index": 25}
+{"instance_id": "django__django-11099", "status": "success", "error": "", "index": 26}
+{"instance_id": "django__django-11119", "status": "success", "error": "", "index": 27}
+{"instance_id": "django__django-11133", "status": "success", "error": "", "index": 28}
+{"instance_id": "django__django-11138", "status": "success", "error": "", "index": 29}
+{"instance_id": "django__django-11141", "status": "success", "error": "", "index": 30}
+{"instance_id": "django__django-11163", "status": "success", "error": "", "index": 31}
+{"instance_id": "django__django-11179", "status": "success", "error": "", "index": 32}
+{"instance_id": "django__django-11206", "status": "success", "error": "", "index": 33}
+{"instance_id": "django__django-11211", "status": "success", "error": "", "index": 34}
+{"instance_id": "django__django-11239", "status": "success", "error": "", "index": 35}
+{"instance_id": "django__django-11265", "status": "success", "error": "", "index": 36}
+{"instance_id": "django__django-11276", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11276']' returned non-zero exit status 1.", "index": 37}
+{"instance_id": "django__django-11299", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11299']' returned non-zero exit status 1.", "index": 38}
+{"instance_id": "django__django-11333", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11333']' returned non-zero exit status 1.", "index": 39}
+{"instance_id": "django__django-11400", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11400']' returned non-zero exit status 1.", "index": 40}
+{"instance_id": "django__django-11433", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11433']' returned non-zero exit status 1.", "index": 41}
+{"instance_id": "django__django-11451", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11451']' returned non-zero exit status 1.", "index": 42}
+{"instance_id": "django__django-11477", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11477']' returned non-zero exit status 1.", "index": 43}
+{"instance_id": "django__django-11490", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11490']' returned non-zero exit status 1.", "index": 44}
+{"instance_id": "django__django-11532", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11532']' returned non-zero exit status 1.", "index": 45}
+{"instance_id": "django__django-11551", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11551']' returned non-zero exit status 1.", "index": 46}
+{"instance_id": "django__django-11555", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11555']' returned non-zero exit status 1.", "index": 47}
+{"instance_id": "django__django-11603", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11603']' returned non-zero exit status 1.", "index": 48}
+{"instance_id": "django__django-11728", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11728']' returned non-zero exit status 1.", "index": 49}
+{"instance_id": "django__django-11734", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11734']' returned non-zero exit status 1.", "index": 50}
+{"instance_id": "django__django-11740", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11740']' returned non-zero exit status 1.", "index": 51}
+{"instance_id": "django__django-11749", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11749']' returned non-zero exit status 1.", "index": 52}
+{"instance_id": "django__django-11790", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11790']' returned non-zero exit status 1.", "index": 53}
+{"instance_id": "django__django-11815", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11815']' returned non-zero exit status 1.", "index": 54}
+{"instance_id": "django__django-11820", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11820']' returned non-zero exit status 1.", "index": 55}
+{"instance_id": "django__django-11848", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11848']' returned non-zero exit status 1.", "index": 56}
+{"instance_id": "django__django-11880", "status": "success", "error": "", "index": 57}
+{"instance_id": "django__django-11885", "status": "success", "error": "", "index": 58}
+{"instance_id": "django__django-11951", "status": "success", "error": "", "index": 59}
+{"instance_id": "django__django-11964", "status": "success", "error": "", "index": 60}
+{"instance_id": "django__django-11999", "status": "success", "error": "", "index": 61}
+{"instance_id": "django__django-12050", "status": "success", "error": "", "index": 62}
+{"instance_id": "django__django-12125", "status": "success", "error": "", "index": 63}
+{"instance_id": "django__django-12155", "status": "success", "error": "", "index": 64}
+{"instance_id": "django__django-12209", "status": "success", "error": "", "index": 65}
+{"instance_id": "django__django-12262", "status": "success", "error": "", "index": 66}
+{"instance_id": "django__django-12273", "status": "error", "error": "Command 'docker exec c0b3c614c0934f9d9eec2db567cae4b4a3c9065060f5602b3fd528fa8e5051d7 bash -c \"sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen && export LANG=en_US.UTF-8 && export LANGUAGE=en_US:en && export LC_ALL=en_US.UTF-8 && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn /assertflip && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn hypothesis && assertflip --test-cmd './tests/runtests.py --verbosity 2 --settings=test_sqlite --parallel 1' --source-dir django --tests-dir tests --max-attempts 10 --dataset /results/django__django-12273.json --model openai/gpt-4o-mini --phase pass_then_invert --max-generation-retries 10 --max-attempts 10 \"' timed out after 3599.999975755345 seconds", "index": 67}
+{"instance_id": "django__django-12276", "status": "success", "error": "", "index": 68}
+{"instance_id": "django__django-12304", "status": "success", "error": "", "index": 69}
+{"instance_id": "django__django-12308", "status": "success", "error": "", "index": 70}
+{"instance_id": "django__django-12325", "status": "error", "error": "Command 'docker exec 3751a3df3c98358583c13bb0372d831b215c72b6cd70bcd25539fbdc615b5e87 bash -c \"sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen && export LANG=en_US.UTF-8 && export LANGUAGE=en_US:en && export LC_ALL=en_US.UTF-8 && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn /assertflip && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn hypothesis && assertflip --test-cmd './tests/runtests.py --verbosity 2 --settings=test_sqlite --parallel 1' --source-dir django --tests-dir tests --max-attempts 10 --dataset /results/django__django-12325.json --model openai/gpt-4o-mini --phase pass_then_invert --max-generation-retries 10 --max-attempts 10 \"' timed out after 3599.999978150241 seconds", "index": 71}
+{"instance_id": "django__django-12406", "status": "success", "error": "", "index": 72}
+{"instance_id": "django__django-12419", "status": "success", "error": "", "index": 73}
+{"instance_id": "django__django-12663", "status": "success", "error": "", "index": 74}
+{"instance_id": "django__django-12708", "status": "success", "error": "", "index": 75}
+{"instance_id": "django__django-12713", "status": "success", "error": "", "index": 76}
+{"instance_id": "django__django-12741", "status": "success", "error": "", "index": 77}
+{"instance_id": "django__django-12754", "status": "success", "error": "", "index": 78}
+{"instance_id": "django__django-12774", "status": "success", "error": "", "index": 79}
+{"instance_id": "django__django-12858", "status": "error", "error": "Command 'docker exec 20371923a8f86802b99ab26d81becb90a003697251000c42179d1b67d2905962 bash -c \"sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen && export LANG=en_US.UTF-8 && export LANGUAGE=en_US:en && export LC_ALL=en_US.UTF-8 && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn /assertflip && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn hypothesis && assertflip --test-cmd './tests/runtests.py --verbosity 2 --settings=test_sqlite --parallel 1' --source-dir django --tests-dir tests --max-attempts 10 --dataset /results/django__django-12858.json --model openai/gpt-4o-mini --phase pass_then_invert --max-generation-retries 10 --max-attempts 10 \"' timed out after 3599.999973321799 seconds", "index": 80}
+{"instance_id": "django__django-12965", "status": "success", "error": "", "index": 81}
+{"instance_id": "django__django-13012", "status": "success", "error": "", "index": 82}
+{"instance_id": "django__django-13023", "status": "success", "error": "", "index": 83}
+{"instance_id": "django__django-13028", "status": "success", "error": "", "index": 84}
+{"instance_id": "django__django-13033", "status": "error", "error": "Command 'docker exec 8eb5bcc3a66c818d9e2b6e1f93448699c334296a6440d88e531b65ac10ecf939 bash -c \"sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen && export LANG=en_US.UTF-8 && export LANGUAGE=en_US:en && export LC_ALL=en_US.UTF-8 && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn /assertflip && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn hypothesis && assertflip --test-cmd './tests/runtests.py --verbosity 2 --settings=test_sqlite --parallel 1' --source-dir django --tests-dir tests --max-attempts 10 --dataset /results/django__django-13033.json --model openai/gpt-4o-mini --phase pass_then_invert --max-generation-retries 10 --max-attempts 10 \"' timed out after 3599.9999762689695 seconds", "index": 85}
+{"instance_id": "django__django-13109", "status": "success", "error": "", "index": 86}
+{"instance_id": "django__django-13112", "status": "success", "error": "", "index": 87}

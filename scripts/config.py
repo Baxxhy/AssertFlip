@@ -6,6 +6,6 @@ RESULTS_DIR = "../test"
 
 # Other constants
 max_attempts = 10
-model = "azure/gpt-4o"
+model = "openai/gpt-4o-mini"
 phase_mode = "pass_then_invert"  # Options: pass_then_invert (default mode), direct_fail_variant (for the ablations)
 max_generation_retries = 10 

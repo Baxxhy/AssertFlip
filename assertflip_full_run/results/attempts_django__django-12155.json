@@ -1,0 +1,263 @@
+[
+  {
+    "instance_id": "django__django-12155",
+    "problem_statement": [
+      "docutils reports an error rendering view docstring when the first line is not empty\nDescription\n\t\nCurrently admindoc works correctly only with docstrings where the first line is empty, and all Django docstrings are formatted in this way.\nHowever usually the docstring text starts at the first line, e.g.:\ndef test():\n\t\"\"\"test tests something.\n\t\"\"\"\nand this cause an error:\nError in \"default-role\" directive:\nno content permitted.\n.. default-role:: cmsreference\nThe culprit is this code in trim_docstring:\nindent = min(len(line) - len(line.lstrip()) for line in lines if line.lstrip())\nThe problem is that the indentation of the first line is 0.\nThe solution is to skip the first line:\nindent = min(len(line) - len(line.lstrip()) for line in lines[1:] if line.lstrip())\nThanks.\n"
+    ]
+  },
+  {
+    "generation_attempt": 0
+  },
+  {
+    "phase": "first_test",
+    "attempt": 1,
+    "sub_attempt": 1,
+    "status": "generated",
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with a docstring that starts with a non-empty line.\n        This should trigger the bug where the first line's indentation is not handled correctly.\n        \"\"\"\n\n        # Prepare a docstring that starts with a non-empty line\n        docstring = \"\"\"This is a test docstring with leading content.\n        \n        This is the second line.\"\"\"\n        \n        # Call trim_docstring and capture the output\n        trimmed_docstring = trim_docstring(docstring)\n        \n        # Pass the trimmed docstring to parse_docstring\n        title, body, metadata = parse_docstring(trimmed_docstring)\n\n        # Assert that the body is not empty, which indicates the bug is present\n        self.assertTrue(body.strip() != \"\", \"BUG: The body should not be empty, but it is due to incorrect trimming.\")\n        \n        # Assert that the title is as expected\n        self.assertEqual(title, \"This is a test docstring with leading content.\", \"BUG: The title is incorrectly parsed due to the bug.\")\n"
+  },
+  {
+    "phase": "generate_passing_test",
+    "attempt": 1,
+    "test_command": [
+      "/opt/miniconda3/envs/testbed/bin/python",
+      "-m",
+      "coverage",
+      "run",
+      "./tests/runtests.py",
+      "--verbosity",
+      "2",
+      "--settings=test_sqlite",
+      "--parallel",
+      "1",
+      "test_uuy_rwth"
+    ],
+    "test_command_env": {
+      "PROJECT_NAME": "django",
+      "HOSTNAME": "7f86a782cbcc",
+      "LANGUAGE": "en_US:en",
+      "AZURE_API_VERSION": "",
+      "OPENAI_API_KEY": "sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg",
+      "PWD": "/testbed",
+      "TZ": "Etc/UTC",
+      "AZURE_API_BASE": "",
+      "HOME": "/root",
+      "LANG": "en_US.UTF-8",
+      "AZURE_API_KEY": "",
+      "SHLVL": "0",
+      "OPENAI_API_BASE": "https://api.nuwaapi.com/v1",
+      "LC_ALL": "en_US.UTF-8",
+      "PATH": "/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CUSTOM_INSTRUCTIONS": "Do NOT use or import pytest you must use django.test\n\nFor example:\n\n```python\nfrom django.test import SimpleTestCase\nfrom django.test.utils import isolate_apps\n\n@isolate_apps(\"absolute_url_overrides\")\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\n    def test_get_absolute_url(self):\n        \"\"\"\n        get_absolute_url() functions as a normal method.\n        \"\"\"\n\n        def get_absolute_url(o):\n            return \"/test-a/%s/\" % o.pk\n\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\n\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\n        obj = TestA(pk=1, name=\"Foo\")\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\n```\n",
+      "_": "/opt/miniconda3/bin/assertflip",
+      "TIKTOKEN_CACHE_DIR": "/opt/miniconda3/lib/python3.11/site-packages/litellm/litellm_core_utils/tokenizers",
+      "PYTHONPATH": "/testbed/tests"
+    },
+    "status": "passing",
+    "coverage": {
+      "covered_lines": 13008,
+      "num_statements": 39608,
+      "percent_covered": 32.841850131286606,
+      "percent_covered_display": "33",
+      "missing_lines": 26600,
+      "excluded_lines": 0
+    },
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with a docstring that starts with a non-empty line.\n        This should trigger the bug where the first line's indentation is not handled correctly.\n        \"\"\"\n\n        # Prepare a docstring that starts with a non-empty line\n        docstring = \"\"\"This is a test docstring with leading content.\n        \n        This is the second line.\"\"\"\n        \n        # Call trim_docstring and capture the output\n        trimmed_docstring = trim_docstring(docstring)\n        \n        # Pass the trimmed docstring to parse_docstring\n        title, body, metadata = parse_docstring(trimmed_docstring)\n\n        # Assert that the body is not empty, which indicates the bug is present\n        self.assertTrue(body.strip() != \"\", \"BUG: The body should not be empty, but it is due to incorrect trimming.\")\n        \n        # Assert that the title is as expected\n        self.assertEqual(title, \"This is a test docstring with leading content.\", \"BUG: The title is incorrectly parsed due to the bug.\")\n"
+  },
+  {
+    "phase": "invert_to_failing",
+    "attempt": 1,
+    "status": "generated",
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with a docstring that starts with a non-empty line.\n        This should pass only when the bug is fixed.\n        \"\"\"\n\n        # Prepare a docstring that starts with a non-empty line\n        docstring = \"\"\"This is a test docstring with leading content.\n        \n        This is the second line.\"\"\"\n        \n        # Call trim_docstring and capture the output\n        trimmed_docstring = trim_docstring(docstring)\n        \n        # Pass the trimmed docstring to parse_docstring\n        title, body, metadata = parse_docstring(trimmed_docstring)\n\n        # Assert that the body is empty, which indicates the bug is present\n        self.assertTrue(body.strip() == \"\", \"The body should be empty, indicating the bug is present.\")\n        \n        # Assert that the title is not as expected\n        self.assertNotEqual(title, \"This is a test docstring with leading content.\", \"The title is incorrectly parsed due to the bug.\")\n\n"
+  },
+  {
+    "phase": "invert_to_failing",
+    "attempt": 1,
+    "test_command": [
+      "/opt/miniconda3/envs/testbed/bin/python",
+      "-m",
+      "coverage",
+      "run",
+      "./tests/runtests.py",
+      "--verbosity",
+      "2",
+      "--settings=test_sqlite",
+      "--parallel",
+      "1",
+      "test_my6ctyz7"
+    ],
+    "test_command_env": {
+      "PROJECT_NAME": "django",
+      "HOSTNAME": "7f86a782cbcc",
+      "LANGUAGE": "en_US:en",
+      "AZURE_API_VERSION": "",
+      "OPENAI_API_KEY": "sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg",
+      "PWD": "/testbed",
+      "TZ": "Etc/UTC",
+      "AZURE_API_BASE": "",
+      "HOME": "/root",
+      "LANG": "en_US.UTF-8",
+      "AZURE_API_KEY": "",
+      "SHLVL": "0",
+      "OPENAI_API_BASE": "https://api.nuwaapi.com/v1",
+      "LC_ALL": "en_US.UTF-8",
+      "PATH": "/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CUSTOM_INSTRUCTIONS": "Do NOT use or import pytest you must use django.test\n\nFor example:\n\n```python\nfrom django.test import SimpleTestCase\nfrom django.test.utils import isolate_apps\n\n@isolate_apps(\"absolute_url_overrides\")\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\n    def test_get_absolute_url(self):\n        \"\"\"\n        get_absolute_url() functions as a normal method.\n        \"\"\"\n\n        def get_absolute_url(o):\n            return \"/test-a/%s/\" % o.pk\n\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\n\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\n        obj = TestA(pk=1, name=\"Foo\")\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\n```\n",
+      "_": "/opt/miniconda3/bin/assertflip",
+      "TIKTOKEN_CACHE_DIR": "/opt/miniconda3/lib/python3.11/site-packages/litellm/litellm_core_utils/tokenizers",
+      "PYTHONPATH": "/testbed/tests"
+    },
+    "error": "test_trim_docstring_with_non_empty_first_line (test_my6ctyz7.TrimDocstringTests) ... FAIL\n\n======================================================================\nFAIL: test_trim_docstring_with_non_empty_first_line (test_my6ctyz7.TrimDocstringTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/testbed/tests/test_my6ctyz7.py\", line 23, in test_trim_docstring_with_non_empty_first_line\n    self.assertTrue(body.strip() == \"\", \"The body should be empty, indicating the bug is present.\")\nAssertionError: False is not true : The body should be empty, indicating the bug is present.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\nTesting against Django installed in '/testbed/django'\nSkipping setup of unused database(s): default, other.\nSystem check identified no issues (0 silenced).\n",
+    "status": "failing",
+    "coverage": {
+      "covered_lines": 13007,
+      "num_statements": 39608,
+      "percent_covered": 32.839325388810344,
+      "percent_covered_display": "33",
+      "missing_lines": 26601,
+      "excluded_lines": 0
+    },
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with a docstring that starts with a non-empty line.\n        This should pass only when the bug is fixed.\n        \"\"\"\n\n        # Prepare a docstring that starts with a non-empty line\n        docstring = \"\"\"This is a test docstring with leading content.\n        \n        This is the second line.\"\"\"\n        \n        # Call trim_docstring and capture the output\n        trimmed_docstring = trim_docstring(docstring)\n        \n        # Pass the trimmed docstring to parse_docstring\n        title, body, metadata = parse_docstring(trimmed_docstring)\n\n        # Assert that the body is empty, which indicates the bug is present\n        self.assertTrue(body.strip() == \"\", \"The body should be empty, indicating the bug is present.\")\n        \n        # Assert that the title is not as expected\n        self.assertNotEqual(title, \"This is a test docstring with leading content.\", \"The title is incorrectly parsed due to the bug.\")\n\n"
+  },
+  {
+    "phase": "validate_bug_with_llm",
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with a docstring that starts with a non-empty line.\n        This should pass only when the bug is fixed.\n        \"\"\"\n\n        # Prepare a docstring that starts with a non-empty line\n        docstring = \"\"\"This is a test docstring with leading content.\n        \n        This is the second line.\"\"\"\n        \n        # Call trim_docstring and capture the output\n        trimmed_docstring = trim_docstring(docstring)\n        \n        # Pass the trimmed docstring to parse_docstring\n        title, body, metadata = parse_docstring(trimmed_docstring)\n\n        # Assert that the body is empty, which indicates the bug is present\n        self.assertTrue(body.strip() == \"\", \"The body should be empty, indicating the bug is present.\")\n        \n        # Assert that the title is not as expected\n        self.assertNotEqual(title, \"This is a test docstring with leading content.\", \"The title is incorrectly parsed due to the bug.\")\n\n",
+    "error": "test_trim_docstring_with_non_empty_first_line (test_my6ctyz7.TrimDocstringTests) ... FAIL\n\n======================================================================\nFAIL: test_trim_docstring_with_non_empty_first_line (test_my6ctyz7.TrimDocstringTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/testbed/tests/test_my6ctyz7.py\", line 23, in test_trim_docstring_with_non_empty_first_line\n    self.assertTrue(body.strip() == \"\", \"The body should be empty, indicating the bug is present.\")\nAssertionError: False is not true : The body should be empty, indicating the bug is present.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\nTesting against Django installed in '/testbed/django'\nSkipping setup of unused database(s): default, other.\nSystem check identified no issues (0 silenced).\n",
+    "revealing": false,
+    "reason": "The test is incorrectly designed to validate the presence of the bug. The expectation that the body should be empty is based on the assumption that the bug is still present, but the actual behavior of the `trim_docstring` function may have changed. The test does not account for the possibility that the function has been fixed, and thus the body may not be empty. Additionally, the assertion that the title should not equal the original docstring title is also flawed, as it does not provide a clear indication of the bug's presence or absence. The test should instead check for specific expected outputs based on the known behavior of the function after the bug fix."
+  },
+  {
+    "phase": "generation_feedback",
+    "generation_attempt": 1,
+    "feedback": "Previous test was rejected \u2014 trying a different approach."
+  },
+  {
+    "generation_attempt": 1
+  },
+  {
+    "phase": "first_test",
+    "attempt": 1,
+    "sub_attempt": 1,
+    "status": "generated",
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with various docstrings that start with a non-empty line.\n        This should pass only when the bug is fixed.\n        \"\"\"\n\n        # Prepare a list of docstrings that start with a non-empty line\n        docstrings = [\n            \"\"\"This is a test docstring with leading content.\n            \n            This is the second line.\"\"\",\n            \"\"\"    This is a test docstring with leading spaces.\n            \n            This is the second line.\"\"\",\n            \"\"\"This is a test docstring with multiple lines.\n\n            This is the second line.\"\"\"\n        ]\n\n        for docstring in docstrings:\n            # Call trim_docstring and capture the output\n            trimmed_docstring = trim_docstring(docstring)\n            \n            # Pass the trimmed docstring to parse_docstring\n            title, body, metadata = parse_docstring(trimmed_docstring)\n\n            # Assert that the body is not empty, indicating the bug is present if it is\n            self.assertNotEqual(body.strip(), \"\", \"The body should not be empty, indicating the bug is present.\")\n            \n            # Assert that the title is correctly parsed\n            self.assertEqual(title.strip(), docstring.splitlines()[0].strip(), \"The title is incorrectly parsed due to the bug.\")\n"
+  },
+  {
+    "phase": "generate_passing_test",
+    "attempt": 1,
+    "test_command": [
+      "/opt/miniconda3/envs/testbed/bin/python",
+      "-m",
+      "coverage",
+      "run",
+      "./tests/runtests.py",
+      "--verbosity",
+      "2",
+      "--settings=test_sqlite",
+      "--parallel",
+      "1",
+      "test_294xpw0k"
+    ],
+    "test_command_env": {
+      "PROJECT_NAME": "django",
+      "HOSTNAME": "7f86a782cbcc",
+      "LANGUAGE": "en_US:en",
+      "AZURE_API_VERSION": "",
+      "OPENAI_API_KEY": "sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg",
+      "PWD": "/testbed",
+      "TZ": "Etc/UTC",
+      "AZURE_API_BASE": "",
+      "HOME": "/root",
+      "LANG": "en_US.UTF-8",
+      "AZURE_API_KEY": "",
+      "SHLVL": "0",
+      "OPENAI_API_BASE": "https://api.nuwaapi.com/v1",
+      "LC_ALL": "en_US.UTF-8",
+      "PATH": "/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CUSTOM_INSTRUCTIONS": "Do NOT use or import pytest you must use django.test\n\nFor example:\n\n```python\nfrom django.test import SimpleTestCase\nfrom django.test.utils import isolate_apps\n\n@isolate_apps(\"absolute_url_overrides\")\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\n    def test_get_absolute_url(self):\n        \"\"\"\n        get_absolute_url() functions as a normal method.\n        \"\"\"\n\n        def get_absolute_url(o):\n            return \"/test-a/%s/\" % o.pk\n\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\n\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\n        obj = TestA(pk=1, name=\"Foo\")\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\n```\n",
+      "_": "/opt/miniconda3/bin/assertflip",
+      "TIKTOKEN_CACHE_DIR": "/opt/miniconda3/lib/python3.11/site-packages/litellm/litellm_core_utils/tokenizers",
+      "PYTHONPATH": "/testbed/tests"
+    },
+    "status": "passing",
+    "coverage": {
+      "covered_lines": 13008,
+      "num_statements": 39609,
+      "percent_covered": 32.84102098008029,
+      "percent_covered_display": "33",
+      "missing_lines": 26601,
+      "excluded_lines": 0
+    },
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with various docstrings that start with a non-empty line.\n        This should pass only when the bug is fixed.\n        \"\"\"\n\n        # Prepare a list of docstrings that start with a non-empty line\n        docstrings = [\n            \"\"\"This is a test docstring with leading content.\n            \n            This is the second line.\"\"\",\n            \"\"\"    This is a test docstring with leading spaces.\n            \n            This is the second line.\"\"\",\n            \"\"\"This is a test docstring with multiple lines.\n\n            This is the second line.\"\"\"\n        ]\n\n        for docstring in docstrings:\n            # Call trim_docstring and capture the output\n            trimmed_docstring = trim_docstring(docstring)\n            \n            # Pass the trimmed docstring to parse_docstring\n            title, body, metadata = parse_docstring(trimmed_docstring)\n\n            # Assert that the body is not empty, indicating the bug is present if it is\n            self.assertNotEqual(body.strip(), \"\", \"The body should not be empty, indicating the bug is present.\")\n            \n            # Assert that the title is correctly parsed\n            self.assertEqual(title.strip(), docstring.splitlines()[0].strip(), \"The title is incorrectly parsed due to the bug.\")\n"
+  },
+  {
+    "phase": "invert_to_failing",
+    "attempt": 1,
+    "status": "generated",
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with various docstrings that start with a non-empty line.\n        This should fail when the bug is present and pass only when the bug is fixed.\n        \"\"\"\n\n        # Prepare a list of docstrings that start with a non-empty line\n        docstrings = [\n            \"\"\"This is a test docstring with leading content.\n            \n            This is the second line.\"\"\",\n            \"\"\"    This is a test docstring with leading spaces.\n            \n            This is the second line.\"\"\",\n            \"\"\"This is a test docstring with multiple lines.\n\n            This is the second line.\"\"\"\n        ]\n\n        for docstring in docstrings:\n            # Call trim_docstring and capture the output\n            trimmed_docstring = trim_docstring(docstring)\n            \n            # Pass the trimmed docstring to parse_docstring\n            title, body, metadata = parse_docstring(trimmed_docstring)\n\n            # Assert that the body is empty, indicating the bug is present if it is not\n            self.assertEqual(body.strip(), \"\", \"The body should be empty, indicating the bug is present.\")\n            \n            # Assert that the title is correctly parsed\n            self.assertEqual(title.strip(), docstring.splitlines()[0].strip(), \"The title is incorrectly parsed due to the bug.\")\n"
+  },
+  {
+    "phase": "invert_to_failing",
+    "attempt": 1,
+    "test_command": [
+      "/opt/miniconda3/envs/testbed/bin/python",
+      "-m",
+      "coverage",
+      "run",
+      "./tests/runtests.py",
+      "--verbosity",
+      "2",
+      "--settings=test_sqlite",
+      "--parallel",
+      "1",
+      "test_gugcsbqg"
+    ],
+    "test_command_env": {
+      "PROJECT_NAME": "django",
+      "HOSTNAME": "7f86a782cbcc",
+      "LANGUAGE": "en_US:en",
+      "AZURE_API_VERSION": "",
+      "OPENAI_API_KEY": "sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg",
+      "PWD": "/testbed",
+      "TZ": "Etc/UTC",
+      "AZURE_API_BASE": "",
+      "HOME": "/root",
+      "LANG": "en_US.UTF-8",
+      "AZURE_API_KEY": "",
+      "SHLVL": "0",
+      "OPENAI_API_BASE": "https://api.nuwaapi.com/v1",
+      "LC_ALL": "en_US.UTF-8",
+      "PATH": "/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CUSTOM_INSTRUCTIONS": "Do NOT use or import pytest you must use django.test\n\nFor example:\n\n```python\nfrom django.test import SimpleTestCase\nfrom django.test.utils import isolate_apps\n\n@isolate_apps(\"absolute_url_overrides\")\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\n    def test_get_absolute_url(self):\n        \"\"\"\n        get_absolute_url() functions as a normal method.\n        \"\"\"\n\n        def get_absolute_url(o):\n            return \"/test-a/%s/\" % o.pk\n\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\n\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\n        obj = TestA(pk=1, name=\"Foo\")\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\n```\n",
+      "_": "/opt/miniconda3/bin/assertflip",
+      "TIKTOKEN_CACHE_DIR": "/opt/miniconda3/lib/python3.11/site-packages/litellm/litellm_core_utils/tokenizers",
+      "PYTHONPATH": "/testbed/tests"
+    },
+    "error": "test_trim_docstring_with_non_empty_first_line (test_gugcsbqg.TrimDocstringTests) ... FAIL\n\n======================================================================\nFAIL: test_trim_docstring_with_non_empty_first_line (test_gugcsbqg.TrimDocstringTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/testbed/tests/test_gugcsbqg.py\", line 32, in test_trim_docstring_with_non_empty_first_line\n    self.assertEqual(body.strip(), \"\", \"The body should be empty, indicating the bug is present.\")\nAssertionError: 'This is the second line.' != ''\n- This is the second line.\n+ \n : The body should be empty, indicating the bug is present.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\nTesting against Django installed in '/testbed/django'\nSkipping setup of unused database(s): default, other.\nSystem check identified no issues (0 silenced).\n",
+    "status": "failing",
+    "coverage": {
+      "covered_lines": 13008,
+      "num_statements": 39609,
+      "percent_covered": 32.84102098008029,
+      "percent_covered_display": "33",
+      "missing_lines": 26601,
+      "excluded_lines": 0
+    },
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with various docstrings that start with a non-empty line.\n        This should fail when the bug is present and pass only when the bug is fixed.\n        \"\"\"\n\n        # Prepare a list of docstrings that start with a non-empty line\n        docstrings = [\n            \"\"\"This is a test docstring with leading content.\n            \n            This is the second line.\"\"\",\n            \"\"\"    This is a test docstring with leading spaces.\n            \n            This is the second line.\"\"\",\n            \"\"\"This is a test docstring with multiple lines.\n\n            This is the second line.\"\"\"\n        ]\n\n        for docstring in docstrings:\n            # Call trim_docstring and capture the output\n            trimmed_docstring = trim_docstring(docstring)\n            \n            # Pass the trimmed docstring to parse_docstring\n            title, body, metadata = parse_docstring(trimmed_docstring)\n\n            # Assert that the body is empty, indicating the bug is present if it is not\n            self.assertEqual(body.strip(), \"\", \"The body should be empty, indicating the bug is present.\")\n            \n            # Assert that the title is correctly parsed\n            self.assertEqual(title.strip(), docstring.splitlines()[0].strip(), \"The title is incorrectly parsed due to the bug.\")\n"
+  },
+  {
+    "phase": "validate_bug_with_llm",
+    "test_code": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with various docstrings that start with a non-empty line.\n        This should fail when the bug is present and pass only when the bug is fixed.\n        \"\"\"\n\n        # Prepare a list of docstrings that start with a non-empty line\n        docstrings = [\n            \"\"\"This is a test docstring with leading content.\n            \n            This is the second line.\"\"\",\n            \"\"\"    This is a test docstring with leading spaces.\n            \n            This is the second line.\"\"\",\n            \"\"\"This is a test docstring with multiple lines.\n\n            This is the second line.\"\"\"\n        ]\n\n        for docstring in docstrings:\n            # Call trim_docstring and capture the output\n            trimmed_docstring = trim_docstring(docstring)\n            \n            # Pass the trimmed docstring to parse_docstring\n            title, body, metadata = parse_docstring(trimmed_docstring)\n\n            # Assert that the body is empty, indicating the bug is present if it is not\n            self.assertEqual(body.strip(), \"\", \"The body should be empty, indicating the bug is present.\")\n            \n            # Assert that the title is correctly parsed\n            self.assertEqual(title.strip(), docstring.splitlines()[0].strip(), \"The title is incorrectly parsed due to the bug.\")\n",
+    "error": "test_trim_docstring_with_non_empty_first_line (test_gugcsbqg.TrimDocstringTests) ... FAIL\n\n======================================================================\nFAIL: test_trim_docstring_with_non_empty_first_line (test_gugcsbqg.TrimDocstringTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/testbed/tests/test_gugcsbqg.py\", line 32, in test_trim_docstring_with_non_empty_first_line\n    self.assertEqual(body.strip(), \"\", \"The body should be empty, indicating the bug is present.\")\nAssertionError: 'This is the second line.' != ''\n- This is the second line.\n+ \n : The body should be empty, indicating the bug is present.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\nTesting against Django installed in '/testbed/django'\nSkipping setup of unused database(s): default, other.\nSystem check identified no issues (0 silenced).\n",
+    "revealing": true,
+    "reason": "The test is correctly designed to reproduce the reported bug by checking if the body of the docstring is empty when it should be, given that the first line is non-empty. The failure indicates that the bug is present, as the body is not empty, which aligns with the issue described in the ticket. Therefore, the test failure does reveal the bug."
+  },
+  {
+    "phase": "terminating",
+    "mode": "passing_first",
+    "final_test": "from django.test import SimpleTestCase\nfrom django.contrib.admindocs.utils import trim_docstring, parse_docstring\n\nclass TrimDocstringTests(SimpleTestCase):\n    def test_trim_docstring_with_non_empty_first_line(self):\n        \"\"\"\n        Test trim_docstring with various docstrings that start with a non-empty line.\n        This should fail when the bug is present and pass only when the bug is fixed.\n        \"\"\"\n\n        # Prepare a list of docstrings that start with a non-empty line\n        docstrings = [\n            \"\"\"This is a test docstring with leading content.\n            \n            This is the second line.\"\"\",\n            \"\"\"    This is a test docstring with leading spaces.\n            \n            This is the second line.\"\"\",\n            \"\"\"This is a test docstring with multiple lines.\n\n            This is the second line.\"\"\"\n        ]\n\n        for docstring in docstrings:\n            # Call trim_docstring and capture the output\n            trimmed_docstring = trim_docstring(docstring)\n            \n            # Pass the trimmed docstring to parse_docstring\n            title, body, metadata = parse_docstring(trimmed_docstring)\n\n            # Assert that the body is empty, indicating the bug is present if it is not\n            self.assertEqual(body.strip(), \"\", \"The body should be empty, indicating the bug is present.\")\n            \n            # Assert that the title is correctly parsed\n            self.assertEqual(title.strip(), docstring.splitlines()[0].strip(), \"The title is incorrectly parsed due to the bug.\")\n",
+    "outcome": "success"
+  },
+  {
+    "meta": "cost_summary",
+    "total_cost": 0.0052026
+  }
+]

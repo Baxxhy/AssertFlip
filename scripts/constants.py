@@ -452,7 +452,7 @@ SPECS_MATPLOTLIB = {
         "install": "python -m pip install -e .",
         "pre_install": [
             "apt-get -y update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get install -y imagemagick ffmpeg texlive texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-luatex cm-super dvipng",
-            "QHULL_URL=\"http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz\"",
+            "QHULL_URL=\"${QHULL_URL:-https://mirrors.tuna.tsinghua.edu.cn/pkgsrc/distfiles/qhull-2020-src-8.0.2.tgz}\"",
             "QHULL_TAR=\"/tmp/qhull-2020-src-8.0.2.tgz\"",
             "QHULL_BUILD_DIR=\"/testbed/build\"",
             "wget -O \"$QHULL_TAR\" \"$QHULL_URL\"",
@@ -488,7 +488,7 @@ SPECS_MATPLOTLIB.update(
             "install": "python -m pip install -e .",
             "pre_install": [
                 "apt-get -y update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get install -y imagemagick ffmpeg libfreetype6-dev pkg-config texlive texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-luatex cm-super",
-                "QHULL_URL=\"http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz\"",
+                "QHULL_URL=\"${QHULL_URL:-https://mirrors.tuna.tsinghua.edu.cn/pkgsrc/distfiles/qhull-2020-src-8.0.2.tgz}\"",
                 "QHULL_TAR=\"/tmp/qhull-2020-src-8.0.2.tgz\"",
                 "QHULL_BUILD_DIR=\"/testbed/build\"",
                 "wget -O \"$QHULL_TAR\" \"$QHULL_URL\"",
@@ -509,7 +509,7 @@ SPECS_MATPLOTLIB.update(
             "install": "python -m pip install -e .",
             "pre_install": [
                 "apt-get -y update && apt-get -y upgrade && apt-get install -y imagemagick ffmpeg libfreetype6-dev pkg-config",
-                "QHULL_URL=\"http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz\"",
+                "QHULL_URL=\"${QHULL_URL:-https://mirrors.tuna.tsinghua.edu.cn/pkgsrc/distfiles/qhull-2020-src-8.0.2.tgz}\"",
                 "QHULL_TAR=\"/tmp/qhull-2020-src-8.0.2.tgz\"",
                 "QHULL_BUILD_DIR=\"/testbed/build\"",
                 "wget -O \"$QHULL_TAR\" \"$QHULL_URL\"",

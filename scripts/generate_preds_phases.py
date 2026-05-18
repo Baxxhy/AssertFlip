@@ -1,23 +1,10 @@
-import os
+import argparse
 import json
 import tempfile
 import subprocess
 from pathlib import Path
 from tqdm import tqdm
-from dotenv import load_dotenv
-from datasets import load_dataset
-import pandas as pd
 
-load_dotenv()
-DATASET = "princeton-nlp/SWE-bench_Verified"
-
-ds = load_dataset(DATASET, split="test")
-dataset = pd.DataFrame(ds)
-
-# Configuration
-# Adjust these paths as needed
-RESULTS_DIR = Path()
-OUT_FILE = RESULTS_DIR / ""
 MODEL_NAME = "AssertFlip"
 INTERESTING_INSTANCES = []
 
@@ -71,20 +58,14 @@ def make_patch(test_code: str, instance_id: str) -> str:
         )
         return result.stdout.strip()
 
-def already_processed(instance_id: str) -> bool:
-    if not OUT_FILE.exists():
-        return False
-    with open(OUT_FILE) as f:
-        for line in f:
-            entry = json.loads(line)
-            if entry["instance_id"] == instance_id:
-                return True
-    return False
-
 def get_final_successful_test(attempts: list) -> dict:
-    last = attempts[-2]
-    if last.get("outcome") == "success" and "final_test" in last:
-        return last
+    for item in reversed(attempts):
+        if (
+            item.get("phase") == "terminating"
+            and item.get("outcome") == "success"
+            and "final_test" in item
+        ):
+            return item
     return None
 
 def get_target_path(instance_id: str) -> str:
@@ -93,17 +74,40 @@ def get_target_path(instance_id: str) -> str:
     return f"{prefix}{instance_id}.py"
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--results-dir", required=True)
+    parser.add_argument("--out-file", required=True)
+    parser.add_argument("--model-name", default=MODEL_NAME)
+    parser.add_argument(
+        "--instance-ids",
+        default="",
+        help="Optional comma-separated instance IDs to include.",
+    )
+    args = parser.parse_args()
+
+    results_dir = Path(args.results_dir)
+    out_file = Path(args.out_file)
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    model_name = args.model_name
+    interesting_instances = set(filter(None, args.instance_ids.split(",")))
+    processed_instances = set()
+    if out_file.exists():
+        with open(out_file) as existing:
+            for line in existing:
+                if line.strip():
+                    processed_instances.add(json.loads(line)["instance_id"])
+
     preds = []
 
-    for fpath in tqdm(list(RESULTS_DIR.glob("attempts_*.json"))):
+    for fpath in tqdm(sorted(results_dir.glob("attempts_*.json"))):
         with open(fpath) as f:
             attempts = json.load(f)
 
         instance_id = attempts[0]["instance_id"]
 
-        if INTERESTING_INSTANCES and instance_id not in INTERESTING_INSTANCES:
+        if interesting_instances and instance_id not in interesting_instances:
             continue
-        if already_processed(instance_id):
+        if instance_id in processed_instances:
             continue
 
         last_successful = get_final_successful_test(attempts)
@@ -118,14 +122,15 @@ def main():
 
         preds.append({
             "instance_id": instance_id,
-            "model_name_or_path": MODEL_NAME,
+            "model_name_or_path": model_name,
             "model_patch": patch
         })
 
-        with open(OUT_FILE, "a") as out:
+        with open(out_file, "a") as out:
             out.write(json.dumps(preds[-1]) + "\n")
+        processed_instances.add(instance_id)
 
-    print(f"\n Wrote {len(preds)} entries to {OUT_FILE}")
+    print(f"\nWrote {len(preds)} new entries to {out_file}")
 
 if __name__ == "__main__":
     main()

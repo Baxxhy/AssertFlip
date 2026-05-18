@@ -1,0 +1,114 @@
+{"instance_id": "pydata__xarray-7229", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.pydata_1776_xarray-7229']' returned non-zero exit status 1.", "index": 2}
+{"instance_id": "sphinx-doc__sphinx-10466", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10466']' returned non-zero exit status 1.", "index": 3}
+{"instance_id": "sphinx-doc__sphinx-10673", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10673']' returned non-zero exit status 1.", "index": 1}
+{"instance_id": "django__django-14404", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14404']' returned non-zero exit status 1.", "index": 4}
+{"instance_id": "django__django-13837", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13837']' returned non-zero exit status 1.", "index": 6}
+{"instance_id": "django__django-14053", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14053']' returned non-zero exit status 1.", "index": 7}
+{"instance_id": "django__django-15315", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15315']' returned non-zero exit status 1.", "index": 5}
+{"instance_id": "scikit-learn__scikit-learn-14087", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-14087']' returned non-zero exit status 1.", "index": 9}
+{"instance_id": "matplotlib__matplotlib-24026", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-24026']' returned non-zero exit status 1.", "index": 8}
+{"instance_id": "matplotlib__matplotlib-23314", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23314']' returned non-zero exit status 1.", "index": 10}
+{"instance_id": "pydata__xarray-6721", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.pydata_1776_xarray-6721']' returned non-zero exit status 1.", "index": 11}
+{"instance_id": "pydata__xarray-4356", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.pydata_1776_xarray-4356']' returned non-zero exit status 1.", "index": 13}
+{"instance_id": "matplotlib__matplotlib-22865", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-22865']' returned non-zero exit status 1.", "index": 12}
+{"instance_id": "django__django-14631", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14631']' returned non-zero exit status 1.", "index": 15}
+{"instance_id": "pylint-dev__pylint-8898", "status": "error", "error": "Command '['docker', 'pull', 'docker.1ms.run/swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-8898']' returned non-zero exit status 1.", "index": 16}
+{"instance_id": "sphinx-doc__sphinx-10673", "status": "success", "error": "", "index": 1}
+{"instance_id": "pydata__xarray-7229", "status": "success", "error": "", "index": 2}
+{"instance_id": "sphinx-doc__sphinx-10466", "status": "success", "error": "", "index": 3}
+{"instance_id": "django__django-15315", "status": "success", "error": "", "index": 5}
+{"instance_id": "django__django-13837", "status": "success", "error": "", "index": 6}
+{"instance_id": "django__django-14404", "status": "success", "error": "", "index": 4}
+{"instance_id": "django__django-14053", "status": "success", "error": "", "index": 7}
+{"instance_id": "scikit-learn__scikit-learn-14087", "status": "success", "error": "", "index": 9}
+{"instance_id": "matplotlib__matplotlib-24026", "status": "success", "error": "", "index": 8}
+{"instance_id": "pydata__xarray-6721", "status": "error", "error": "Command '['docker', 'create', '--name', 'assertflip_pydata_xarray_6721_cf801718', '--network', 'host', '-v', '/root/Baxxhy/BugReproduce/AssertFlip/assertflip_swt_verified_author326_first100_run/results:/results:rw', '-e', 'OPENAI_API_KEY=sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg', '-e', 'OPENAI_API_BASE=https://api.nuwaapi.com/v1', '-e', 'AZURE_API_KEY=', '-e', 'AZURE_API_BASE=', '-e', 'AZURE_API_VERSION=', '-e', 'PROJECT_NAME=xarray', 'swebench/sweb.eval.x86_64.pydata_1776_xarray-6721', 'sleep', 'infinity']' returned non-zero exit status 1.", "index": 11}
+{"instance_id": "matplotlib__matplotlib-23314", "status": "error", "error": "Command 'docker exec 755eced32a7147ce9fb48aed528809c434158d01d29c6226b72dc3413265f3c9 bash -c \"pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn /assertflip && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn hypothesis && assertflip --test-cmd 'pytest -rA' --source-dir lib/matplotlib --tests-dir lib/matplotlib/tests --max-attempts 3 --dataset /results/matplotlib__matplotlib-23314.json --model openai/gpt-4o-mini --phase pass_then_invert --max-generation-retries 3 --max-attempts 3 \"' returned non-zero exit status 1.", "index": 10}
+{"instance_id": "matplotlib__matplotlib-22865", "status": "error", "error": "\u6240\u6709 Docker \u955c\u50cf\u6e90\u90fd\u62c9\u53d6\u5931\u8d25: docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-22865 \u62c9\u53d6\u5931\u8d25\uff0c\u9000\u51fa\u7801 1 | swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-22865 \u62c9\u53d6\u5931\u8d25\uff0c\u9000\u51fa\u7801 1", "index": 12}
+{"instance_id": "pydata__xarray-4356", "status": "error", "error": "\u6240\u6709 Docker \u955c\u50cf\u6e90\u90fd\u62c9\u53d6\u5931\u8d25: docker.1ms.run/swebench/sweb.eval.x86_64.pydata_1776_xarray-4356 \u62c9\u53d6\u5931\u8d25\uff0c\u9000\u51fa\u7801 1 | swebench/sweb.eval.x86_64.pydata_1776_xarray-4356 \u62c9\u53d6\u5931\u8d25\uff0c\u9000\u51fa\u7801 1", "index": 13}
+{"instance_id": "astropy__astropy-14182", "status": "success", "error": "", "index": 14}
+{"instance_id": "django__django-14631", "status": "error", "error": "Command '['docker', 'create', '--name', 'assertflip_django_django_14631_72f1dc1a', '--network', 'host', '-v', '/root/Baxxhy/BugReproduce/AssertFlip/assertflip_swt_verified_author326_first100_run/results:/results:rw', '-e', 'OPENAI_API_KEY=sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg', '-e', 'OPENAI_API_BASE=https://api.nuwaapi.com/v1', '-e', 'AZURE_API_KEY=', '-e', 'AZURE_API_BASE=', '-e', 'AZURE_API_VERSION=', '-e', 'CUSTOM_INSTRUCTIONS=Do NOT use or import pytest you must use django.test\\n\\nFor example:\\n\\n```python\\nfrom django.test import SimpleTestCase\\nfrom django.test.utils import isolate_apps\\n\\n@isolate_apps(\"absolute_url_overrides\")\\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\\n    def test_get_absolute_url(self):\\n        \"\"\"\\n        get_absolute_url() functions as a normal method.\\n        \"\"\"\\n\\n        def get_absolute_url(o):\\n            return \"/test-a/%s/\" % o.pk\\n\\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\\n\\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\\n        obj = TestA(pk=1, name=\"Foo\")\\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\\n```\\n', '-e', 'PROJECT_NAME=django', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14631', 'sleep', 'infinity']' returned non-zero exit status 1.", "index": 15}
+{"instance_id": "django__django-10554", "status": "error", "error": "Command '['docker', 'create', '--name', 'assertflip_django_django_10554_86be9b85', '--network', 'host', '-v', '/root/Baxxhy/BugReproduce/AssertFlip/assertflip_swt_verified_author326_first100_run/results:/results:rw', '-e', 'OPENAI_API_KEY=sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg', '-e', 'OPENAI_API_BASE=https://api.nuwaapi.com/v1', '-e', 'AZURE_API_KEY=', '-e', 'AZURE_API_BASE=', '-e', 'AZURE_API_VERSION=', '-e', 'CUSTOM_INSTRUCTIONS=Do NOT use or import pytest you must use django.test\\n\\nFor example:\\n\\n```python\\nfrom django.test import SimpleTestCase\\nfrom django.test.utils import isolate_apps\\n\\n@isolate_apps(\"absolute_url_overrides\")\\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\\n    def test_get_absolute_url(self):\\n        \"\"\"\\n        get_absolute_url() functions as a normal method.\\n        \"\"\"\\n\\n        def get_absolute_url(o):\\n            return \"/test-a/%s/\" % o.pk\\n\\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\\n\\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\\n        obj = TestA(pk=1, name=\"Foo\")\\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\\n```\\n', '-e', 'PROJECT_NAME=django', 'swebench/sweb.eval.x86_64.django_1776_django-10554', 'sleep', 'infinity']' returned non-zero exit status 1.", "index": 17}
+{"instance_id": "django__django-13023", "status": "error", "error": "Command '['docker', 'create', '--name', 'assertflip_django_django_13023_7d47f56e', '--network', 'host', '-v', '/root/Baxxhy/BugReproduce/AssertFlip/assertflip_swt_verified_author326_first100_run/results:/results:rw', '-e', 'OPENAI_API_KEY=sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg', '-e', 'OPENAI_API_BASE=https://api.nuwaapi.com/v1', '-e', 'AZURE_API_KEY=', '-e', 'AZURE_API_BASE=', '-e', 'AZURE_API_VERSION=', '-e', 'CUSTOM_INSTRUCTIONS=Do NOT use or import pytest you must use django.test\\n\\nFor example:\\n\\n```python\\nfrom django.test import SimpleTestCase\\nfrom django.test.utils import isolate_apps\\n\\n@isolate_apps(\"absolute_url_overrides\")\\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\\n    def test_get_absolute_url(self):\\n        \"\"\"\\n        get_absolute_url() functions as a normal method.\\n        \"\"\"\\n\\n        def get_absolute_url(o):\\n            return \"/test-a/%s/\" % o.pk\\n\\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\\n\\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\\n        obj = TestA(pk=1, name=\"Foo\")\\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\\n```\\n', '-e', 'PROJECT_NAME=django', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13023', 'sleep', 'infinity']' returned non-zero exit status 1.", "index": 18}
+{"instance_id": "matplotlib__matplotlib-25122", "status": "error", "error": "[Errno 28] No space left on device", "index": 19}
+{"instance_id": "sympy__sympy-18199", "status": "error", "error": "[Errno 28] No space left on device", "index": 20}
+{"instance_id": "pydata__xarray-7233", "status": "error", "error": "[Errno 28] No space left on device", "index": 21}
+{"instance_id": "sympy__sympy-13551", "status": "error", "error": "[Errno 28] No space left on device", "index": 22}
+{"instance_id": "matplotlib__matplotlib-25332", "status": "error", "error": "[Errno 28] No space left on device", "index": 23}
+{"instance_id": "scikit-learn__scikit-learn-14496", "status": "error", "error": "[Errno 28] No space left on device", "index": 24}
+{"instance_id": "matplotlib__matplotlib-24627", "status": "error", "error": "[Errno 28] No space left on device", "index": 25}
+{"instance_id": "sympy__sympy-20438", "status": "error", "error": "[Errno 28] No space left on device", "index": 26}
+{"instance_id": "pytest-dev__pytest-5787", "status": "error", "error": "[Errno 28] No space left on device", "index": 27}
+{"instance_id": "django__django-14311", "status": "error", "error": "[Errno 28] No space left on device", "index": 28}
+{"instance_id": "sympy__sympy-18698", "status": "error", "error": "[Errno 28] No space left on device", "index": 29}
+{"instance_id": "django__django-13401", "status": "error", "error": "[Errno 28] No space left on device", "index": 30}
+{"instance_id": "sympy__sympy-12481", "status": "error", "error": "[Errno 28] No space left on device", "index": 31}
+{"instance_id": "django__django-11239", "status": "error", "error": "[Errno 28] No space left on device", "index": 32}
+{"instance_id": "django__django-15930", "status": "error", "error": "[Errno 28] No space left on device", "index": 33}
+{"instance_id": "django__django-14672", "status": "error", "error": "[Errno 28] No space left on device", "index": 34}
+{"instance_id": "django__django-15277", "status": "error", "error": "[Errno 28] No space left on device", "index": 35}
+{"instance_id": "django__django-12325", "status": "error", "error": "[Errno 28] No space left on device", "index": 36}
+{"instance_id": "django__django-12050", "status": "error", "error": "[Errno 28] No space left on device", "index": 37}
+{"instance_id": "sympy__sympy-15599", "status": "error", "error": "[Errno 28] No space left on device", "index": 38}
+{"instance_id": "astropy__astropy-14096", "status": "error", "error": "[Errno 28] No space left on device", "index": 39}
+{"instance_id": "mwaskom__seaborn-3069", "status": "error", "error": "[Errno 28] No space left on device", "index": 40}
+{"instance_id": "astropy__astropy-14539", "status": "error", "error": "[Errno 28] No space left on device", "index": 41}
+{"instance_id": "django__django-14792", "status": "error", "error": "[Errno 28] No space left on device", "index": 42}
+{"instance_id": "sympy__sympy-15017", "status": "error", "error": "[Errno 28] No space left on device", "index": 43}
+{"instance_id": "pydata__xarray-4629", "status": "error", "error": "[Errno 28] No space left on device", "index": 44}
+{"instance_id": "scikit-learn__scikit-learn-12973", "status": "error", "error": "[Errno 28] No space left on device", "index": 45}
+{"instance_id": "sympy__sympy-17655", "status": "error", "error": "[Errno 28] No space left on device", "index": 46}
+{"instance_id": "django__django-16429", "status": "error", "error": "[Errno 28] No space left on device", "index": 47}
+{"instance_id": "django__django-11603", "status": "error", "error": "[Errno 28] No space left on device", "index": 48}
+{"instance_id": "django__django-13551", "status": "error", "error": "[Errno 28] No space left on device", "index": 49}
+{"instance_id": "django__django-11333", "status": "error", "error": "[Errno 28] No space left on device", "index": 50}
+{"instance_id": "sphinx-doc__sphinx-8721", "status": "error", "error": "[Errno 28] No space left on device", "index": 51}
+{"instance_id": "matplotlib__matplotlib-24970", "status": "error", "error": "[Errno 28] No space left on device", "index": 52}
+{"instance_id": "django__django-15278", "status": "error", "error": "[Errno 28] No space left on device", "index": 53}
+{"instance_id": "django__django-13786", "status": "error", "error": "[Errno 28] No space left on device", "index": 54}
+{"instance_id": "pydata__xarray-3151", "status": "error", "error": "[Errno 28] No space left on device", "index": 55}
+{"instance_id": "django__django-11206", "status": "error", "error": "[Errno 28] No space left on device", "index": 56}
+{"instance_id": "sympy__sympy-19783", "status": "error", "error": "[Errno 28] No space left on device", "index": 57}
+{"instance_id": "django__django-15375", "status": "error", "error": "[Errno 28] No space left on device", "index": 58}
+{"instance_id": "sympy__sympy-19346", "status": "error", "error": "[Errno 28] No space left on device", "index": 59}
+{"instance_id": "django__django-11880", "status": "error", "error": "[Errno 28] No space left on device", "index": 60}
+{"instance_id": "sympy__sympy-12096", "status": "error", "error": "[Errno 28] No space left on device", "index": 61}
+{"instance_id": "pylint-dev__pylint-7277", "status": "error", "error": "[Errno 28] No space left on device", "index": 62}
+{"instance_id": "matplotlib__matplotlib-24570", "status": "error", "error": "[Errno 28] No space left on device", "index": 63}
+{"instance_id": "sympy__sympy-24066", "status": "error", "error": "[Errno 28] No space left on device", "index": 64}
+{"instance_id": "django__django-11790", "status": "error", "error": "[Errno 28] No space left on device", "index": 65}
+{"instance_id": "django__django-16899", "status": "error", "error": "[Errno 28] No space left on device", "index": 66}
+{"instance_id": "django__django-11138", "status": "error", "error": "[Errno 28] No space left on device", "index": 67}
+{"instance_id": "sphinx-doc__sphinx-9591", "status": "error", "error": "[Errno 28] No space left on device", "index": 68}
+{"instance_id": "sympy__sympy-24562", "status": "error", "error": "[Errno 28] No space left on device", "index": 69}
+{"instance_id": "sympy__sympy-19637", "status": "error", "error": "[Errno 28] No space left on device", "index": 70}
+{"instance_id": "sympy__sympy-23824", "status": "error", "error": "[Errno 28] No space left on device", "index": 71}
+{"instance_id": "sphinx-doc__sphinx-9367", "status": "error", "error": "[Errno 28] No space left on device", "index": 72}
+{"instance_id": "scikit-learn__scikit-learn-11310", "status": "error", "error": "[Errno 28] No space left on device", "index": 73}
+{"instance_id": "astropy__astropy-14369", "status": "error", "error": "[Errno 28] No space left on device", "index": 74}
+{"instance_id": "sphinx-doc__sphinx-8595", "status": "error", "error": "[Errno 28] No space left on device", "index": 75}
+{"instance_id": "sphinx-doc__sphinx-9673", "status": "error", "error": "[Errno 28] No space left on device", "index": 76}
+{"instance_id": "django__django-15569", "status": "error", "error": "[Errno 28] No space left on device", "index": 77}
+{"instance_id": "django__django-13809", "status": "error", "error": "[Errno 28] No space left on device", "index": 78}
+{"instance_id": "django__django-15103", "status": "error", "error": "[Errno 28] No space left on device", "index": 79}
+{"instance_id": "sympy__sympy-15349", "status": "error", "error": "[Errno 28] No space left on device", "index": 80}
+{"instance_id": "pydata__xarray-4687", "status": "error", "error": "[Errno 28] No space left on device", "index": 81}
+{"instance_id": "django__django-11749", "status": "error", "error": "[Errno 28] No space left on device", "index": 82}
+{"instance_id": "django__django-14500", "status": "error", "error": "[Errno 28] No space left on device", "index": 83}
+{"instance_id": "scikit-learn__scikit-learn-13779", "status": "error", "error": "[Errno 28] No space left on device", "index": 84}
+{"instance_id": "scikit-learn__scikit-learn-13135", "status": "error", "error": "[Errno 28] No space left on device", "index": 85}
+{"instance_id": "sympy__sympy-22456", "status": "error", "error": "[Errno 28] No space left on device", "index": 86}
+{"instance_id": "django__django-14855", "status": "error", "error": "[Errno 28] No space left on device", "index": 87}
+{"instance_id": "astropy__astropy-13236", "status": "error", "error": "[Errno 28] No space left on device", "index": 88}
+{"instance_id": "django__django-13933", "status": "error", "error": "[Errno 28] No space left on device", "index": 89}
+{"instance_id": "django__django-15161", "status": "error", "error": "[Errno 28] No space left on device", "index": 90}
+{"instance_id": "pylint-dev__pylint-7080", "status": "error", "error": "[Errno 28] No space left on device", "index": 91}
+{"instance_id": "django__django-11099", "status": "error", "error": "[Errno 28] No space left on device", "index": 92}
+{"instance_id": "pydata__xarray-7393", "status": "error", "error": "[Errno 28] No space left on device", "index": 93}
+{"instance_id": "django__django-13516", "status": "error", "error": "[Errno 28] No space left on device", "index": 94}
+{"instance_id": "django__django-13670", "status": "error", "error": "[Errno 28] No space left on device", "index": 95}
+{"instance_id": "django__django-11179", "status": "error", "error": "[Errno 28] No space left on device", "index": 96}
+{"instance_id": "django__django-15380", "status": "error", "error": "[Errno 28] No space left on device", "index": 97}
+{"instance_id": "scikit-learn__scikit-learn-13328", "status": "error", "error": "[Errno 28] No space left on device", "index": 98}
+{"instance_id": "pytest-dev__pytest-7982", "status": "error", "error": "[Errno 28] No space left on device", "index": 99}
+{"instance_id": "django__django-14771", "status": "error", "error": "[Errno 28] No space left on device", "i

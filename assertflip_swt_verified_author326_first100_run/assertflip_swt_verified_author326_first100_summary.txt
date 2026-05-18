@@ -1,0 +1,123 @@
+AssertFlip 运行汇总报告
+数据集文件: /root/Baxxhy/BugReproduce/AssertFlip/datasets/SWT_Verified_Agentless_Author_Default_326.json
+本报告统计范围: 前 100 条 / 数据集原始总数 326 条
+结果目录: /root/Baxxhy/BugReproduce/AssertFlip/assertflip_swt_verified_author326_first100_run/results
+
+指标说明:
+- 这个报告只统计你这次本地运行 AssertFlip 的结果，不再混入仓库自带的历史评测 JSON。
+- “本地生成成功，AssertFlip已接受”表示 AssertFlip 生成并接受了一个 bug-revealing 测试文件。
+- 这还不是最终 F2P。真正 F2P 还需要再跑 SWE-Bench evaluator：测试要在 buggy 版本失败，并且在 fixed/golden patch 版本通过。
+- 论文里的覆盖率是 Delta Mean Change Coverage，也就是 golden patch 修改行上的覆盖率变化；不是 attempts 日志里的普通 coverage.py 总覆盖率。
+- 当前表里的运行覆盖率来自 attempts 日志，是生成测试在 buggy checkout 上跑出来的普通 coverage.py 总覆盖率。
+
+总条数: 100
+有生成尝试日志的条数: 0
+被 AssertFlip 在 buggy 侧接受的条数: 0
+本地接受率: 0.00%
+生成了尝试但未被接受的条数: 0
+本地运行错误条数: 0
+最终 F2P 成功条数: 当前未计算，需要另跑 SWE-Bench evaluator
+最终 F2P 成功率: 当前未计算，需要另跑 SWE-Bench evaluator
+
+逐条结果表:
+序号	实例ID	本地运行结果	是否有生成日志	是否被AssertFlip接受	流程阶段	运行覆盖率百分比	失败原因或说明
+1	sphinx-doc__sphinx-10673	没有生成日志	否	否			没有找到 attempts 日志
+2	pydata__xarray-7229	没有生成日志	否	否			没有找到 attempts 日志
+3	sphinx-doc__sphinx-10466	没有生成日志	否	否			没有找到 attempts 日志
+4	django__django-14404	没有生成日志	否	否			没有找到 attempts 日志
+5	django__django-15315	没有生成日志	否	否			没有找到 attempts 日志
+6	django__django-13837	没有生成日志	否	否			没有找到 attempts 日志
+7	django__django-14053	没有生成日志	否	否			没有找到 attempts 日志
+8	matplotlib__matplotlib-24026	没有生成日志	否	否			没有找到 attempts 日志
+9	scikit-learn__scikit-learn-14087	没有生成日志	否	否			没有找到 attempts 日志
+10	matplotlib__matplotlib-23314	没有生成日志	否	否			没有找到 attempts 日志
+11	pydata__xarray-6721	没有生成日志	否	否			没有找到 attempts 日志
+12	matplotlib__matplotlib-22865	没有生成日志	否	否			没有找到 attempts 日志
+13	pydata__xarray-4356	没有生成日志	否	否			没有找到 attempts 日志
+14	astropy__astropy-14182	没有生成日志	否	否			没有找到 attempts 日志
+15	django__django-14631	没有生成日志	否	否			没有找到 attempts 日志
+16	pylint-dev__pylint-8898	没有生成日志	否	否			没有找到 attempts 日志
+17	django__django-10554	没有生成日志	否	否			没有找到 attempts 日志
+18	django__django-13023	没有生成日志	否	否			没有找到 attempts 日志
+19	matplotlib__matplotlib-25122	没有生成日志	否	否			没有找到 attempts 日志
+20	sympy__sympy-18199	没有生成日志	否	否			没有找到 attempts 日志
+21	pydata__xarray-7233	没有生成日志	否	否			没有找到 attempts 日志
+22	sympy__sympy-13551	没有生成日志	否	否			没有找到 attempts 日志
+23	matplotlib__matplotlib-25332	没有生成日志	否	否			没有找到 attempts 日志
+24	scikit-learn__scikit-learn-14496	没有生成日志	否	否			没有找到 attempts 日志
+25	matplotlib__matplotlib-24627	没有生成日志	否	否			没有找到 attempts 日志
+26	sympy__sympy-20438	没有生成日志	否	否			没有找到 attempts 日志
+27	pytest-dev__pytest-5787	没有生成日志	否	否			没有找到 attempts 日志
+28	django__django-14311	没有生成日志	否	否			没有找到 attempts 日志
+29	sympy__sympy-18698	没有生成日志	否	否			没有找到 attempts 日志
+30	django__django-13401	没有生成日志	否	否			没有找到 attempts 日志
+31	sympy__sympy-12481	没有生成日志	否	否			没有找到 attempts 日志
+32	django__django-11239	没有生成日志	否	否			没有找到 attempts 日志
+33	django__django-15930	没有生成日志	否	否			没有找到 attempts 日志
+34	django__django-14672	没有生成日志	否	否			没有找到 attempts 日志
+35	django__django-15277	没有生成日志	否	否			没有找到 attempts 日志
+36	django__django-12325	没有生成日志	否	否			没有找到 attempts 日志
+37	django__django-12050	没有生成日志	否	否			没有找到 attempts 日志
+38	sympy__sympy-15599	没有生成日志	否	否			没有找到 attempts 日志
+39	astropy__astropy-14096	没有生成日志	否	否			没有找到 attempts 日志
+40	mwaskom__seaborn-3069	没有生成日志	否	否			没有找到 attempts 日志
+41	astropy__astropy-14539	没有生成日志	否	否			没有找到 attempts 日志
+42	django__django-14792	没有生成日志	否	否			没有找到 attempts 日志
+43	sympy__sympy-15017	没有生成日志	否	否			没有找到 attempts 日志
+44	pydata__xarray-4629	没有生成日志	否	否			没有找到 attempts 日志
+45	scikit-learn__scikit-learn-12973	没有生成日志	否	否			没有找到 attempts 日志
+46	sympy__sympy-17655	没有生成日志	否	否			没有找到 attempts 日志
+47	django__django-16429	没有生成日志	否	否			没有找到 attempts 日志
+48	django__django-11603	没有生成日志	否	否			没有找到 attempts 日志
+49	django__django-13551	没有生成日志	否	否			没有找到 attempts 日志
+50	django__django-11333	没有生成日志	否	否			没有找到 attempts 日志
+51	sphinx-doc__sphinx-8721	没有生成日志	否	否			没有找到 attempts 日志
+52	matplotlib__matplotlib-24970	没有生成日志	否	否			没有找到 attempts 日志
+53	django__django-15278	没有生成日志	否	否			没有找到 attempts 日志
+54	django__django-13786	没有生成日志	否	否			没有找到 attempts 日志
+55	pydata__xarray-3151	没有生成日志	否	否			没有找到 attempts 日志
+56	django__django-11206	没有生成日志	否	否			没有找到 attempts 日志
+57	sympy__sympy-19783	没有生成日志	否	否			没有找到 attempts 日志
+58	django__django-15375	没有生成日志	否	否			没有找到 attempts 日志
+59	sympy__sympy-19346	没有生成日志	否	否			没有找到 attempts 日志
+60	django__django-11880	没有生成日志	否	否			没有找到 attempts 日志
+61	sympy__sympy-12096	没有生成日志	否	否			没有找到 attempts 日志
+62	pylint-dev__pylint-7277	没有生成日志	否	否			没有找到 attempts 日志
+63	matplotlib__matplotlib-24570	没有生成日志	否	否			没有找到 attempts 日志
+64	sympy__sympy-24066	没有生成日志	否	否			没有找到 attempts 日志
+65	django__django-11790	没有生成日志	否	否			没有找到 attempts 日志
+66	django__django-16899	没有生成日志	否	否			没有找到 attempts 日志
+67	django__django-11138	没有生成日志	否	否			没有找到 attempts 日志
+68	sphinx-doc__sphinx-9591	没有生成日志	否	否			没有找到 attempts 日志
+69	sympy__sympy-24562	没有生成日志	否	否			没有找到 attempts 日志
+70	sympy__sympy-19637	没有生成日志	否	否			没有找到 attempts 日志
+71	sympy__sympy-23824	没有生成日志	否	否			没有找到 attempts 日志
+72	sphinx-doc__sphinx-9367	没有生成日志	否	否			没有找到 attempts 日志
+73	scikit-learn__scikit-learn-11310	没有生成日志	否	否			没有找到 attempts 日志
+74	astropy__astropy-14369	没有生成日志	否	否			没有找到 attempts 日志
+75	sphinx-doc__sphinx-8595	没有生成日志	否	否			没有找到 attempts 日志
+76	sphinx-doc__sphinx-9673	没有生成日志	否	否			没有找到 attempts 日志
+77	django__django-15569	没有生成日志	否	否			没有找到 attempts 日志
+78	django__django-13809	没有生成日志	否	否			没有找到 attempts 日志
+79	django__django-15103	没有生成日志	否	否			没有找到 attempts 日志
+80	sympy__sympy-15349	没有生成日志	否	否			没有找到 attempts 日志
+81	pydata__xarray-4687	没有生成日志	否	否			没有找到 attempts 日志
+82	django__django-11749	没有生成日志	否	否			没有找到 attempts 日志
+83	django__django-14500	没有生成日志	否	否			没有找到 attempts 日志
+84	scikit-learn__scikit-learn-13779	没有生成日志	否	否			没有找到 attempts 日志
+85	scikit-learn__scikit-learn-13135	没有生成日志	否	否			没有找到 attempts 日志
+86	sympy__sympy-22456	没有生成日志	否	否			没有找到 attempts 日志
+87	django__django-14855	没有生成日志	否	否			没有找到 attempts 日志
+88	astropy__astropy-13236	没有生成日志	否	否			没有找到 attempts 日志
+89	django__django-13933	没有生成日志	否	否			没有找到 attempts 日志
+90	django__django-15161	没有生成日志	否	否			没有找到 attempts 日志
+91	pylint-dev__pylint-7080	没有生成日志	否	否			没有找到 attempts 日志
+92	django__django-11099	没有生成日志	否	否			没有找到 attempts 日志
+93	pydata__xarray-7393	没有生成日志	否	否			没有找到 attempts 日志
+94	django__django-13516	没有生成日志	否	否			没有找到 attempts 日志
+95	django__django-13670	没有生成日志	否	否			没有找到 attempts 日志
+96	django__django-11179	没有生成日志	否	否			没有找到 attempts 日志
+97	django__django-15380	没有生成日志	否	否			没有找到 attempts 日志
+98	scikit-learn__scikit-learn-13328	没有生成日志	否	否			没有找到 attempts 日志
+99	pytest-dev__pytest-7982	没有生成日志	否	否			没有找到 attempts 日志
+100	django__django-14771	没有生成日志	否	否			没有找到 attempts 日志

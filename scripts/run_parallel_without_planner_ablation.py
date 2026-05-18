@@ -22,6 +22,7 @@ from config import (
     phase_mode,
     max_generation_retries,
 )
+from mirror_config import apt_mirror_setup_command, docker_image_candidates, pip_options
 
 # Parallel processing
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -157,7 +158,8 @@ def process_instance(instance: Dict[str, Any]) -> Dict[str, Any]:
 
     # Docker image name transformation
     id_docker_compatible = instance_id.replace("__", "_1776_")
-    image_name = f"swebench/sweb.eval.x86_64.{id_docker_compatible}"
+    base_image_name = f"swebench/sweb.eval.x86_64.{id_docker_compatible}"
+    image_name = docker_image_candidates(base_image_name)[0]
 
     source_dir = repo_directories[repo_name]['source_dir']
     tests_dir = get_test_dir(repo_name, instance_id)
@@ -181,8 +183,13 @@ def process_instance(instance: Dict[str, Any]) -> Dict[str, Any]:
         if isinstance(test_cmd, list):
             test_cmd = test_cmd[-1]
         
-        result = subprocess.run(["docker", "images", "-q", image_name], capture_output=True, text=True)
-        imageStored =  bool(result.stdout.strip())
+        imageStored = False
+        for candidate in docker_image_candidates(base_image_name):
+            result = subprocess.run(["docker", "images", "-q", candidate], capture_output=True, text=True)
+            if result.stdout.strip():
+                image_name = candidate
+                imageStored = True
+                break
         if imageStored:
             print("Using image from cache for: ", image_name)
         else:
@@ -192,6 +199,8 @@ def process_instance(instance: Dict[str, Any]) -> Dict[str, Any]:
         docker_client = docker.from_env()
         
         env = {
+            "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", ""),
+            "OPENAI_API_BASE": os.getenv("OPENAI_API_BASE", ""),
             "AZURE_API_KEY": os.getenv("AZURE_API_KEY", ""),
             "AZURE_API_BASE": os.getenv("AZURE_API_BASE", ""),
             "AZURE_API_VERSION": os.getenv("AZURE_API_VERSION", ""),
@@ -205,6 +214,7 @@ def process_instance(instance: Dict[str, Any]) -> Dict[str, Any]:
             command="sleep infinity",
             detach=True,
             remove=False,
+            network_mode="host",
             volumes={
                 str(results_dir_abs): {'bind': '/results', 'mode': 'rw'},
             },
@@ -225,9 +235,10 @@ def process_instance(instance: Dict[str, Any]) -> Dict[str, Any]:
 
         # Prepare container: basic deps + coverage
         prep_cmd = (
+            f"{apt_mirror_setup_command()} && "
             "source /opt/miniconda3/etc/profile.d/conda.sh && "
             "conda activate testbed && "
-            "python -m pip install coverage"
+            f"python -m pip install {pip_options()} coverage"
         )
         subprocess.run(f'docker exec {container_id} bash -c "{prep_cmd}"', shell=True, check=True)
 
@@ -235,8 +246,8 @@ def process_instance(instance: Dict[str, Any]) -> Dict[str, Any]:
 
         bash_cmd = (
             f"{env_export}{eval_cmd_str}"
-            "pip install /assertflip && "
-            "pip install hypothesis && "
+            f"pip install {pip_options()} /assertflip && "
+            f"pip install {pip_options()} hypothesis && "
             f"assertflip --test-cmd {quoted_test_cmd} "
             f"--source-dir {source_dir} "
             f"--tests-dir {tests_dir} "

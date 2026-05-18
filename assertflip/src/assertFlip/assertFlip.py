@@ -279,7 +279,7 @@ async def generate_bug_revealing_test(args, chatter, prompter, seg, phase_mode="
             messages_passing = await new_prompt(args, seg, chatter, prompter, mode="passing_first", retry=True)
 
         print("Phase A failed after max retries.")
-        if phase_mode == "phase_a":
+        if phase_mode in ("phase_a", "pass_then_invert"):
             attempt_log.append({
                 "phase": "terminating",
                 "mode": "passing_first",
@@ -751,4 +751,3 @@ def main():
         asyncio.run(work_segment(segments[0]))
 
     return 0
-

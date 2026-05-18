@@ -1,0 +1,211 @@
+AssertFlip full-run summary
+dataset: /root/Baxxhy/BugReproduce/AssertFlip/datasets/SWT_Lite_Agentless_Unique_Only.json
+results_dir: /root/Baxxhy/BugReproduce/AssertFlip/assertflip_swt_lite_unique_run/results
+eval_json: /root/Baxxhy/BugReproduce/AssertFlip/evaluation_results_on_SWT_Bench/assertFlip_Lite_unique_188_instances.json
+
+Paper/code metric notes:
+- F2P success follows the paper/SWT-Bench definition: at least one generated test fails on the buggy version and passes after the golden patch, with no post-patch failing test.
+- F2P labels in this report come from the supplied --eval-json. The AssertFlip generator itself does not apply the golden patch or compute F2P.
+- Delta Mean Change Coverage is the SWT-Bench metric over golden-patch changed lines, not the ordinary coverage.py percent stored in attempts_*.json.
+- The attempt logs only contain coverage.py totals for generated tests on the buggy checkout; per-instance delta coverage requires SWT-Bench evaluation artifacts.
+
+total_instances: 188
+generated_attempt_logs: 0
+accepted_by_assertflip_buggy_side: 0
+f2p_success: 59
+f2p_total_denominator: 188
+f2p_rate_percent: 31.38
+mean_change_coverage_delta_percent_evaluated_generated: 55.06
+mean_change_coverage_delta_percent_all_dataset_effective: 43.35
+mean_coverage_percent_evaluated_generated: 64.28
+
+Per-instance table:
+index	instance_id	f2p	generated	accepted_by_assertflip	phase	run_coverage_percent	error
+1	astropy__astropy-6938	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.astropy_1776_astropy-6938']' returned non-zero exit status 125.
+2	astropy__astropy-7746	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.astropy_1776_astropy-7746']' returned non-zero exit status 125.
+3	django__django-10924	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-10924']' returned non-zero exit status 125.
+4	django__django-11001	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11001']' returned non-zero exit status 125.
+5	django__django-11019	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11019']' returned non-zero exit status 125.
+6	django__django-11039	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11039']' returned non-zero exit status 125.
+7	django__django-11049	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11049']' returned non-zero exit status 125.
+8	django__django-11283	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11283']' returned non-zero exit status 125.
+9	django__django-11422	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11422']' returned non-zero exit status 125.
+10	django__django-11564	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11564']' returned non-zero exit status 125.
+11	django__django-11583	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11583']' returned non-zero exit status 125.
+12	django__django-11620	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11620']' returned non-zero exit status 125.
+13	django__django-11630	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11630']' returned non-zero exit status 125.
+14	django__django-11742	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11742']' returned non-zero exit status 125.
+15	django__django-11797	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11797']' returned non-zero exit status 125.
+16	django__django-11905	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11905']' returned non-zero exit status 125.
+17	django__django-11910	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-11910']' returned non-zero exit status 125.
+18	django__django-12113	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12113']' returned non-zero exit status 125.
+19	django__django-12184	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12184']' returned non-zero exit status 125.
+20	django__django-12284	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12284']' returned non-zero exit status 125.
+21	django__django-12286	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12286']' returned non-zero exit status 125.
+22	django__django-12453	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12453']' returned non-zero exit status 125.
+23	django__django-12470	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12470']' returned non-zero exit status 125.
+24	django__django-12497	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12497']' returned non-zero exit status 125.
+25	django__django-12589	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12589']' returned non-zero exit status 125.
+26	django__django-12700	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12700']' returned non-zero exit status 125.
+27	django__django-12747	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12747']' returned non-zero exit status 125.
+28	django__django-12856	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12856']' returned non-zero exit status 125.
+29	django__django-12908	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12908']' returned non-zero exit status 125.
+30	django__django-12915	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12915']' returned non-zero exit status 125.
+31	django__django-12983	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-12983']' returned non-zero exit status 125.
+32	django__django-13220	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13220']' returned non-zero exit status 125.
+33	django__django-13230	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13230']' returned non-zero exit status 125.
+34	django__django-13265	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13265']' returned non-zero exit status 125.
+35	django__django-13321	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13321']' returned non-zero exit status 125.
+36	django__django-13447	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13447']' returned non-zero exit status 125.
+37	django__django-13448	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13448']' returned non-zero exit status 125.
+38	django__django-13660	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13660']' returned non-zero exit status 125.
+39	django__django-13710	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13710']' returned non-zero exit status 125.
+40	django__django-13757	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13757']' returned non-zero exit status 125.
+41	django__django-13768	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-13768']' returned non-zero exit status 125.
+42	django__django-14016	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14016']' returned non-zero exit status 125.
+43	django__django-14382	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14382']' returned non-zero exit status 125.
+44	django__django-14411	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14411']' returned non-zero exit status 125.
+45	django__django-14667	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14667']' returned non-zero exit status 125.
+46	django__django-14730	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14730']' returned non-zero exit status 125.
+47	django__django-14997	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-14997']' returned non-zero exit status 125.
+48	django__django-15061	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15061']' returned non-zero exit status 125.
+49	django__django-15202	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15202']' returned non-zero exit status 125.
+50	django__django-15213	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15213']' returned non-zero exit status 125.
+51	django__django-15320	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15320']' returned non-zero exit status 125.
+52	django__django-15347	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15347']' returned non-zero exit status 125.
+53	django__django-15388	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15388']' returned non-zero exit status 125.
+54	django__django-15400	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15400']' returned non-zero exit status 125.
+55	django__django-15498	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15498']' returned non-zero exit status 125.
+56	django__django-15738	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15738']' returned non-zero exit status 125.
+57	django__django-15781	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15781']' returned non-zero exit status 125.
+58	django__django-15789	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15789']' returned non-zero exit status 125.
+59	django__django-15790	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15790']' returned non-zero exit status 125.
+60	django__django-15819	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15819']' returned non-zero exit status 125.
+61	django__django-15902	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15902']' returned non-zero exit status 125.
+62	django__django-15996	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-15996']' returned non-zero exit status 125.
+63	django__django-16041	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16041']' returned non-zero exit status 125.
+64	django__django-16046	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16046']' returned non-zero exit status 125.
+65	django__django-16229	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16229']' returned non-zero exit status 125.
+66	django__django-16379	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16379']' returned non-zero exit status 125.
+67	django__django-16400	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16400']' returned non-zero exit status 125.
+68	django__django-16408	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16408']' returned non-zero exit status 125.
+69	django__django-16816	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16816']' returned non-zero exit status 125.
+70	django__django-16820	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16820']' returned non-zero exit status 125.
+71	django__django-16873	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16873']' returned non-zero exit status 125.
+72	django__django-16910	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-16910']' returned non-zero exit status 125.
+73	django__django-17051	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.django_1776_django-17051']' returned non-zero exit status 125.
+74	matplotlib__matplotlib-18869	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-18869']' returned non-zero exit status 125.
+75	matplotlib__matplotlib-22711	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-22711']' returned non-zero exit status 125.
+76	matplotlib__matplotlib-22835	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-22835']' returned non-zero exit status 125.
+77	matplotlib__matplotlib-23562	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23562']' returned non-zero exit status 125.
+78	matplotlib__matplotlib-23563	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23563']' returned non-zero exit status 125.
+79	matplotlib__matplotlib-23913	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23913']' returned non-zero exit status 125.
+80	matplotlib__matplotlib-23964	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23964']' returned non-zero exit status 125.
+81	matplotlib__matplotlib-23987	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23987']' returned non-zero exit status 125.
+82	matplotlib__matplotlib-24265	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-24265']' returned non-zero exit status 125.
+83	matplotlib__matplotlib-24334	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-24334']' returned non-zero exit status 125.
+84	matplotlib__matplotlib-25079	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-25079']' returned non-zero exit status 125.
+85	matplotlib__matplotlib-25433	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-25433']' returned non-zero exit status 125.
+86	matplotlib__matplotlib-25442	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-25442']' returned non-zero exit status 125.
+87	matplotlib__matplotlib-25498	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-25498']' returned non-zero exit status 125.
+88	matplotlib__matplotlib-26011	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-26011']' returned non-zero exit status 125.
+89	matplotlib__matplotlib-26020	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-26020']' returned non-zero exit status 125.
+90	mwaskom__seaborn-2848	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-2848']' returned non-zero exit status 125.
+91	mwaskom__seaborn-3010	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3010']' returned non-zero exit status 125.
+92	mwaskom__seaborn-3190	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3190']' returned non-zero exit status 125.
+93	mwaskom__seaborn-3407	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3407']' returned non-zero exit status 125.
+94	pallets__flask-4992	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pallets_1776_flask-4992']' returned non-zero exit status 125.
+95	pallets__flask-5063	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pallets_1776_flask-5063']' returned non-zero exit status 125.
+96	psf__requests-3362	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.psf_1776_requests-3362']' returned non-zero exit status 125.
+97	pydata__xarray-3364	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pydata_1776_xarray-3364']' returned non-zero exit status 125.
+98	pydata__xarray-4094	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pydata_1776_xarray-4094']' returned non-zero exit status 125.
+99	pydata__xarray-4248	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pydata_1776_xarray-4248']' returned non-zero exit status 125.
+100	pydata__xarray-4493	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pydata_1776_xarray-4493']' returned non-zero exit status 125.
+101	pydata__xarray-5131	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pydata_1776_xarray-5131']' returned non-zero exit status 125.
+102	pylint-dev__pylint-5859	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-5859']' returned non-zero exit status 125.
+103	pylint-dev__pylint-6506	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-6506']' returned non-zero exit status 125.
+104	pylint-dev__pylint-7114	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-7114']' returned non-zero exit status 125.
+105	pylint-dev__pylint-7228	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-7228']' returned non-zero exit status 125.
+106	pylint-dev__pylint-7993	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-7993']' returned non-zero exit status 125.
+107	pytest-dev__pytest-5221	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5221']' returned non-zero exit status 125.
+108	pytest-dev__pytest-5227	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5227']' returned non-zero exit status 125.
+109	pytest-dev__pytest-5413	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5413']' returned non-zero exit status 125.
+110	pytest-dev__pytest-5495	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5495']' returned non-zero exit status 125.
+111	pytest-dev__pytest-5692	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5692']' returned non-zero exit status 125.
+112	pytest-dev__pytest-7168	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7168']' returned non-zero exit status 125.
+113	pytest-dev__pytest-7373	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7373']' returned non-zero exit status 125.
+114	pytest-dev__pytest-8365	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-8365']' returned non-zero exit status 125.
+115	pytest-dev__pytest-8906	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-8906']' returned non-zero exit status 125.
+116	pytest-dev__pytest-9359	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-9359']' returned non-zero exit status 125.
+117	scikit-learn__scikit-learn-10508	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-10508']' returned non-zero exit status 125.
+118	scikit-learn__scikit-learn-10949	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-10949']' returned non-zero exit status 125.
+119	scikit-learn__scikit-learn-11040	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-11040']' returned non-zero exit status 125.
+120	scikit-learn__scikit-learn-11281	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-11281']' returned non-zero exit status 125.
+121	scikit-learn__scikit-learn-12471	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-12471']' returned non-zero exit status 125.
+122	scikit-learn__scikit-learn-13241	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13241']' returned non-zero exit status 125.
+123	scikit-learn__scikit-learn-13497	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13497']' returned non-zero exit status 125.
+124	scikit-learn__scikit-learn-13584	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13584']' returned non-zero exit status 125.
+125	scikit-learn__scikit-learn-14092	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-14092']' returned non-zero exit status 125.
+126	scikit-learn__scikit-learn-15512	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-15512']' returned non-zero exit status 125.
+127	scikit-learn__scikit-learn-15535	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-15535']' returned non-zero exit status 125.
+128	scikit-learn__scikit-learn-25500	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-25500']' returned non-zero exit status 125.
+129	scikit-learn__scikit-learn-25570	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-25570']' returned non-zero exit status 125.
+130	scikit-learn__scikit-learn-25638	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-25638']' returned non-zero exit status 125.
+131	scikit-learn__scikit-learn-25747	success	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-25747']' returned non-zero exit status 125.
+132	sphinx-doc__sphinx-10325	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10325']' returned non-zero exit status 125.
+133	sphinx-doc__sphinx-10451	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10451']' returned non-zero exit status 125.
+134	sphinx-doc__sphinx-8435	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8435']' returned non-zero exit status 125.
+135	sphinx-doc__sphinx-8474	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8474']' returned non-zero exit status 125.
+136	sphinx-doc__sphinx-8506	not_evaluated	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8506']' returned non-zero exit status 125.
+137	sphinx-doc__sphinx-8627	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8627']' returned non-zero exit status 125.
+138	sphinx-doc__sphinx-8713	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8713']' returned non-zero exit status 125.
+139	sphinx-doc__sphinx-8801	failure	no	no			Command '['docker', 'pull', '--progress=plain', 'docker.1ms.run/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8801']' returned non-zero exit status 125.
+140	sympy__sympy-11400	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+141	sympy__sympy-12171	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+142	sympy__sympy-12236	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+143	sympy__sympy-13043	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+144	sympy__sympy-13437	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+145	sympy__sympy-13471	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+146	sympy__sympy-13773	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+147	sympy__sympy-13895	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+148	sympy__sympy-13971	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+149	sympy__sympy-14024	not_evaluated	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+150	sympy__sympy-14308	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+151	sympy__sympy-14317	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+152	sympy__sympy-14396	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+153	sympy__sympy-14774	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+154	sympy__sympy-14817	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+155	sympy__sympy-15011	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+156	sympy__sympy-15308	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+157	sympy__sympy-15346	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+158	sympy__sympy-15609	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+159	sympy__sympy-15678	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+160	sympy__sympy-16106	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+161	sympy__sympy-16281	not_evaluated	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+162	sympy__sympy-16503	not_evaluated	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+163	sympy__sympy-16988	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+164	sympy__sympy-17022	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+165	sympy__sympy-18057	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+166	sympy__sympy-18087	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+167	sympy__sympy-18532	not_evaluated	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+168	sympy__sympy-18621	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+169	sympy__sympy-18835	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+170	sympy__sympy-19007	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+171	sympy__sympy-19254	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+172	sympy__sympy-19487	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+173	sympy__sympy-20049	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+174	sympy__sympy-20212	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+175	sympy__sympy-20322	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+176	sympy__sympy-20442	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+177	sympy__sympy-20639	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+178	sympy__sympy-21055	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+179	sympy__sympy-21171	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+180	sympy__sympy-21614	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+181	sympy__sympy-21627	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+182	sympy__sympy-22005	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+183	sympy__sympy-22840	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+184	sympy__sympy-23117	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+185	sympy__sympy-23191	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+186	sympy__sympy-24102	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+187	sympy__sympy-24152	failure	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')
+188	sympy__sympy-24909	success	no	no			IndexError('index 0 is out of bounds for axis 0 with size 0')

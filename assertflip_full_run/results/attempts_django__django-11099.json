@@ -1,0 +1,199 @@
+[
+  {
+    "instance_id": "django__django-11099",
+    "problem_statement": [
+      "UsernameValidator allows trailing newline in usernames\nDescription\n\t\nASCIIUsernameValidator and UnicodeUsernameValidator use the regex \nr'^[\\w.@+-]+$'\nThe intent is to only allow alphanumeric characters as well as ., @, +, and -. However, a little known quirk of Python regexes is that $ will also match a trailing newline. Therefore, the user name validators will accept usernames which end with a newline. You can avoid this behavior by instead using \\A and \\Z to terminate regexes. For example, the validator regex could be changed to\nr'\\A[\\w.@+-]+\\Z'\nin order to reject usernames that end with a newline.\nI am not sure how to officially post a patch, but the required change is trivial - using the regex above in the two validators in contrib.auth.validators.\n"
+    ]
+  },
+  {
+    "generation_attempt": 0
+  },
+  {
+    "phase": "first_test",
+    "attempt": 1,
+    "sub_attempt": 1,
+    "status": "generated",
+    "test_code": "from django.test import SimpleTestCase\nfrom django.core.exceptions import ValidationError\nfrom django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator\n\nclass UsernameValidatorTests(SimpleTestCase):\n    def setUp(self):\n        self.ascii_validator = ASCIIUsernameValidator()\n        self.unicode_validator = UnicodeUsernameValidator()\n\n    def test_username_validation(self):\n        # Valid usernames\n        valid_usernames = [\n            \"valid_user\",\n            \"user.name\",\n            \"user+name\",\n            \"user-name\",\n            \"user@name\"\n        ]\n\n        # Invalid usernames (with trailing newline)\n        invalid_usernames = [\n            \"invalid_user\\n\",\n            \"user.name\\n\",\n            \"user+name\\n\",\n            \"user-name\\n\",\n            \"user@name\\n\"\n        ]\n\n        # Test valid usernames\n        for username in valid_usernames:\n            try:\n                self.ascii_validator(username)\n                self.unicode_validator(username)\n            except ValidationError:\n                self.fail(f\"ValidationError raised for valid username: {username}\")\n\n        # Test invalid usernames\n        for username in invalid_usernames:\n            # BUG: this behavior is incorrect but currently happens due to the bug\n            with self.assertRaises(ValidationError):\n                self.ascii_validator(username)\n            with self.assertRaises(ValidationError):\n                self.unicode_validator(username)\n"
+  },
+  {
+    "phase": "generate_passing_test",
+    "attempt": 1,
+    "test_command": [
+      "/opt/miniconda3/envs/testbed/bin/python",
+      "-m",
+      "coverage",
+      "run",
+      "./tests/runtests.py",
+      "--verbosity",
+      "2",
+      "--settings=test_sqlite",
+      "--parallel",
+      "1",
+      "test_g_6_wnzg"
+    ],
+    "test_command_env": {
+      "PROJECT_NAME": "django",
+      "HOSTNAME": "7f86a782cbcc",
+      "LANGUAGE": "en_US:en",
+      "AZURE_API_VERSION": "",
+      "OPENAI_API_KEY": "sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg",
+      "PWD": "/testbed",
+      "TZ": "Etc/UTC",
+      "AZURE_API_BASE": "",
+      "HOME": "/root",
+      "LANG": "en_US.UTF-8",
+      "AZURE_API_KEY": "",
+      "SHLVL": "0",
+      "OPENAI_API_BASE": "https://api.nuwaapi.com/v1",
+      "LC_ALL": "en_US.UTF-8",
+      "PATH": "/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CUSTOM_INSTRUCTIONS": "Do NOT use or import pytest you must use django.test\n\nFor example:\n\n```python\nfrom django.test import SimpleTestCase\nfrom django.test.utils import isolate_apps\n\n@isolate_apps(\"absolute_url_overrides\")\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\n    def test_get_absolute_url(self):\n        \"\"\"\n        get_absolute_url() functions as a normal method.\n        \"\"\"\n\n        def get_absolute_url(o):\n            return \"/test-a/%s/\" % o.pk\n\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\n\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\n        obj = TestA(pk=1, name=\"Foo\")\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\n```\n",
+      "_": "/opt/miniconda3/bin/assertflip",
+      "TIKTOKEN_CACHE_DIR": "/opt/miniconda3/lib/python3.11/site-packages/litellm/litellm_core_utils/tokenizers",
+      "PYTHONPATH": "/testbed/tests"
+    },
+    "error": "test_username_validation (test_g_6_wnzg.UsernameValidatorTests) ... FAIL\n\n======================================================================\nFAIL: test_username_validation (test_g_6_wnzg.UsernameValidatorTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/testbed/tests/test_g_6_wnzg.py\", line 41, in test_username_validation\n    self.ascii_validator(username)\nAssertionError: ValidationError not raised\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\nTesting against Django installed in '/testbed/django'\nSkipping setup of unused database(s): default, other.\nSystem check identified no issues (0 silenced).\n",
+    "status": "failing",
+    "coverage": {
+      "covered_lines": 12709,
+      "num_statements": 38843,
+      "percent_covered": 32.71889400921659,
+      "percent_covered_display": "33",
+      "missing_lines": 26134,
+      "excluded_lines": 0
+    },
+    "test_code": "from django.test import SimpleTestCase\nfrom django.core.exceptions import ValidationError\nfrom django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator\n\nclass UsernameValidatorTests(SimpleTestCase):\n    def setUp(self):\n        self.ascii_validator = ASCIIUsernameValidator()\n        self.unicode_validator = UnicodeUsernameValidator()\n\n    def test_username_validation(self):\n        # Valid usernames\n        valid_usernames = [\n            \"valid_user\",\n            \"user.name\",\n            \"user+name\",\n            \"user-name\",\n            \"user@name\"\n        ]\n\n        # Invalid usernames (with trailing newline)\n        invalid_usernames = [\n            \"invalid_user\\n\",\n            \"user.name\\n\",\n            \"user+name\\n\",\n            \"user-name\\n\",\n            \"user@name\\n\"\n        ]\n\n        # Test valid usernames\n        for username in valid_usernames:\n            try:\n                self.ascii_validator(username)\n                self.unicode_validator(username)\n            except ValidationError:\n                self.fail(f\"ValidationError raised for valid username: {username}\")\n\n        # Test invalid usernames\n        for username in invalid_usernames:\n            # BUG: this behavior is incorrect but currently happens due to the bug\n            with self.assertRaises(ValidationError):\n                self.ascii_validator(username)\n            with self.assertRaises(ValidationError):\n                self.unicode_validator(username)\n"
+  },
+  {
+    "phase": "generate_passing_test",
+    "attempt": 1,
+    "response": {
+      "content": "```python\nfrom django.test import SimpleTestCase\nfrom django.core.exceptions import ValidationError\nfrom django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator\n\nclass UsernameValidatorTests(SimpleTestCase):\n    def setUp(self):\n        self.ascii_validator = ASCIIUsernameValidator()\n        self.unicode_validator = UnicodeUsernameValidator()\n\n    def test_username_validation_with_newline(self):\n        # Valid usernames\n        valid_usernames = [\n            \"valid_user\",\n            \"user.name\",\n            \"user+name\",\n            \"user-name\",\n            \"user@name\"\n        ]\n\n        # Invalid usernames (with trailing newline)\n        invalid_usernames = [\n            \"invalid_user\\n\",\n            \"user.name\\n\",\n            \"user+name\\n\",\n            \"user-name\\n\",\n            \"user@name\\n\"\n        ]\n\n        # Test valid usernames\n        for username in valid_usernames:\n            try:\n                self.ascii_validator(username)\n                self.unicode_validator(username)\n            except ValidationError:\n                self.fail(f\"ValidationError raised for valid username: {username}\")\n\n        # Test invalid usernames\n        for username in invalid_usernames:\n            # This should pass, exposing the bug where the validator incorrectly allows newlines\n            self.ascii_validator(username)  # BUG: this behavior is incorrect but currently happens due to the bug\n            self.unicode_validator(username)  # BUG: this behavior is incorrect but currently happens due to the bug\n```",
+      "role": "assistant",
+      "tool_calls": null,
+      "function_call": null,
+      "annotations": []
+    },
+    "test_code": "from django.test import SimpleTestCase\nfrom django.core.exceptions import ValidationError\nfrom django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator\n\nclass UsernameValidatorTests(SimpleTestCase):\n    def setUp(self):\n        self.ascii_validator = ASCIIUsernameValidator()\n        self.unicode_validator = UnicodeUsernameValidator()\n\n    def test_username_validation_with_newline(self):\n        # Valid usernames\n        valid_usernames = [\n            \"valid_user\",\n            \"user.name\",\n            \"user+name\",\n            \"user-name\",\n            \"user@name\"\n        ]\n\n        # Invalid usernames (with trailing newline)\n        invalid_usernames = [\n            \"invalid_user\\n\",\n            \"user.name\\n\",\n            \"user+name\\n\",\n            \"user-name\\n\",\n            \"user@name\\n\"\n        ]\n\n        # Test valid usernames\n        for username in valid_usernames:\n            try:\n                self.ascii_validator(username)\n                self.unicode_validator(username)\n            except ValidationError:\n                self.fail(f\"ValidationError raised for valid username: {username}\")\n\n        # Test invalid usernames\n        for username in invalid_usernames:\n            # This should pass, exposing the bug where the validator incorrectly allows newlines\n            self.ascii_validator(username)  # BUG: this behavior is incorrect but currently happens due to the bug\n            self.unicode_validator(username)  # BUG: this behavior is incorrect but currently happens due to the bug\n"
+  },
+  {
+    "phase": "generate_passing_test",
+    "attempt": 2,
+    "test_command": [
+      "/opt/miniconda3/envs/testbed/bin/python",
+      "-m",
+      "coverage",
+      "run",
+      "./tests/runtests.py",
+      "--verbosity",
+      "2",
+      "--settings=test_sqlite",
+      "--parallel",
+      "1",
+      "test_sm5znn6h"
+    ],
+    "test_command_env": {
+      "PROJECT_NAME": "django",
+      "HOSTNAME": "7f86a782cbcc",
+      "LANGUAGE": "en_US:en",
+      "AZURE_API_VERSION": "",
+      "OPENAI_API_KEY": "sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg",
+      "PWD": "/testbed",
+      "TZ": "Etc/UTC",
+      "AZURE_API_BASE": "",
+      "HOME": "/root",
+      "LANG": "en_US.UTF-8",
+      "AZURE_API_KEY": "",
+      "SHLVL": "0",
+      "OPENAI_API_BASE": "https://api.nuwaapi.com/v1",
+      "LC_ALL": "en_US.UTF-8",
+      "PATH": "/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CUSTOM_INSTRUCTIONS": "Do NOT use or import pytest you must use django.test\n\nFor example:\n\n```python\nfrom django.test import SimpleTestCase\nfrom django.test.utils import isolate_apps\n\n@isolate_apps(\"absolute_url_overrides\")\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\n    def test_get_absolute_url(self):\n        \"\"\"\n        get_absolute_url() functions as a normal method.\n        \"\"\"\n\n        def get_absolute_url(o):\n            return \"/test-a/%s/\" % o.pk\n\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\n\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\n        obj = TestA(pk=1, name=\"Foo\")\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\n```\n",
+      "_": "/opt/miniconda3/bin/assertflip",
+      "TIKTOKEN_CACHE_DIR": "/opt/miniconda3/lib/python3.11/site-packages/litellm/litellm_core_utils/tokenizers",
+      "PYTHONPATH": "/testbed/tests"
+    },
+    "status": "passing",
+    "coverage": {
+      "covered_lines": 12708,
+      "num_statements": 38841,
+      "percent_covered": 32.71800417085039,
+      "percent_covered_display": "33",
+      "missing_lines": 26133,
+      "excluded_lines": 0
+    },
+    "test_code": "from django.test import SimpleTestCase\nfrom django.core.exceptions import ValidationError\nfrom django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator\n\nclass UsernameValidatorTests(SimpleTestCase):\n    def setUp(self):\n        self.ascii_validator = ASCIIUsernameValidator()\n        self.unicode_validator = UnicodeUsernameValidator()\n\n    def test_username_validation_with_newline(self):\n        # Valid usernames\n        valid_usernames = [\n            \"valid_user\",\n            \"user.name\",\n            \"user+name\",\n            \"user-name\",\n            \"user@name\"\n        ]\n\n        # Invalid usernames (with trailing newline)\n        invalid_usernames = [\n            \"invalid_user\\n\",\n            \"user.name\\n\",\n            \"user+name\\n\",\n            \"user-name\\n\",\n            \"user@name\\n\"\n        ]\n\n        # Test valid usernames\n        for username in valid_usernames:\n            try:\n                self.ascii_validator(username)\n                self.unicode_validator(username)\n            except ValidationError:\n                self.fail(f\"ValidationError raised for valid username: {username}\")\n\n        # Test invalid usernames\n        for username in invalid_usernames:\n            # This should pass, exposing the bug where the validator incorrectly allows newlines\n            self.ascii_validator(username)  # BUG: this behavior is incorrect but currently happens due to the bug\n            self.unicode_validator(username)  # BUG: this behavior is incorrect but currently happens due to the bug\n"
+  },
+  {
+    "phase": "invert_to_failing",
+    "attempt": 1,
+    "status": "generated",
+    "test_code": "from django.test import SimpleTestCase\nfrom django.core.exceptions import ValidationError\nfrom django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator\n\nclass UsernameValidatorTests(SimpleTestCase):\n    def setUp(self):\n        self.ascii_validator = ASCIIUsernameValidator()\n        self.unicode_validator = UnicodeUsernameValidator()\n\n    def test_username_validation_with_newline(self):\n        # Valid usernames\n        valid_usernames = [\n            \"valid_user\",\n            \"user.name\",\n            \"user+name\",\n            \"user-name\",\n            \"user@name\"\n        ]\n\n        # Invalid usernames (with trailing newline)\n        invalid_usernames = [\n            \"invalid_user\\n\",\n            \"user.name\\n\",\n            \"user+name\\n\",\n            \"user-name\\n\",\n            \"user@name\\n\"\n        ]\n\n        # Test valid usernames\n        for username in valid_usernames:\n            try:\n                self.ascii_validator(username)\n                self.unicode_validator(username)\n            except ValidationError:\n                self.fail(f\"ValidationError raised for valid username: {username}\")\n\n        # Test invalid usernames\n        for username in invalid_usernames:\n            # This should fail, exposing the bug where the validator incorrectly allows newlines\n            with self.assertRaises(ValidationError):\n                self.ascii_validator(username)  # This should raise ValidationError if the bug is fixed\n            with self.assertRaises(ValidationError):\n                self.unicode_validator(username)  # This should raise ValidationError if the bug is fixed\n"
+  },
+  {
+    "phase": "invert_to_failing",
+    "attempt": 1,
+    "test_command": [
+      "/opt/miniconda3/envs/testbed/bin/python",
+      "-m",
+      "coverage",
+      "run",
+      "./tests/runtests.py",
+      "--verbosity",
+      "2",
+      "--settings=test_sqlite",
+      "--parallel",
+      "1",
+      "test_c7v27un0"
+    ],
+    "test_command_env": {
+      "PROJECT_NAME": "django",
+      "HOSTNAME": "7f86a782cbcc",
+      "LANGUAGE": "en_US:en",
+      "AZURE_API_VERSION": "",
+      "OPENAI_API_KEY": "sk-6kvAVEeMmVlPrLJ8klKTYmFbmLJDyQDCX8a5wSisuXUhIgrg",
+      "PWD": "/testbed",
+      "TZ": "Etc/UTC",
+      "AZURE_API_BASE": "",
+      "HOME": "/root",
+      "LANG": "en_US.UTF-8",
+      "AZURE_API_KEY": "",
+      "SHLVL": "0",
+      "OPENAI_API_BASE": "https://api.nuwaapi.com/v1",
+      "LC_ALL": "en_US.UTF-8",
+      "PATH": "/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CUSTOM_INSTRUCTIONS": "Do NOT use or import pytest you must use django.test\n\nFor example:\n\n```python\nfrom django.test import SimpleTestCase\nfrom django.test.utils import isolate_apps\n\n@isolate_apps(\"absolute_url_overrides\")\nclass AbsoluteUrlOverrideTests(SimpleTestCase):\n    def test_get_absolute_url(self):\n        \"\"\"\n        get_absolute_url() functions as a normal method.\n        \"\"\"\n\n        def get_absolute_url(o):\n            return \"/test-a/%s/\" % o.pk\n\n        TestA = self._create_model_class(\"TestA\", get_absolute_url)\n\n        self.assertTrue(hasattr(TestA, \"get_absolute_url\"))\n        obj = TestA(pk=1, name=\"Foo\")\n        self.assertEqual(\"/test-a/%s/\" % obj.pk, obj.get_absolute_url())\n```\n",
+      "_": "/opt/miniconda3/bin/assertflip",
+      "TIKTOKEN_CACHE_DIR": "/opt/miniconda3/lib/python3.11/site-packages/litellm/litellm_core_utils/tokenizers",
+      "PYTHONPATH": "/testbed/tests"
+    },
+    "error": "test_username_validation_with_newline (test_c7v27un0.UsernameValidatorTests) ... FAIL\n\n======================================================================\nFAIL: test_username_validation_with_newline (test_c7v27un0.UsernameValidatorTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/testbed/tests/test_c7v27un0.py\", line 41, in test_username_validation_with_newline\n    self.ascii_validator(username)  # This should raise ValidationError if the bug is fixed\nAssertionError: ValidationError not raised\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\nTesting against Django installed in '/testbed/django'\nSkipping setup of unused database(s): default, other.\nSystem check identified no issues (0 silenced).\n",
+    "status": "failing",
+    "coverage": {
+      "covered_lines": 12709,
+      "num_statements": 38843,
+      "percent_covered": 32.71889400921659,
+      "percent_covered_display": "33",
+      "missing_lines": 26134,
+      "excluded_lines": 0
+    },
+    "test_code": "from django.test import SimpleTestCase\nfrom django.core.exceptions import ValidationError\nfrom django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator\n\nclass UsernameValidatorTests(SimpleTestCase):\n    def setUp(self):\n        self.ascii_validator = ASCIIUsernameValidator()\n        self.unicode_validator = UnicodeUsernameValidator()\n\n    def test_username_validation_with_newline(self):\n        # Valid usernames\n        valid_usernames = [\n            \"valid_user\",\n            \"user.name\",\n            \"user+name\",\n            \"user-name\",\n            \"user@name\"\n        ]\n\n        # Invalid usernames (with trailing newline)\n        invalid_usernames = [\n            \"invalid_user\\n\",\n            \"user.name\\n\",\n            \"user+name\\n\",\n            \"user-name\\n\",\n            \"user@name\\n\"\n        ]\n\n        # Test valid usernames\n        for username in valid_usernames:\n            try:\n                self.ascii_validator(username)\n                self.unicode_validator(username)\n            except ValidationError:\n                self.fail(f\"ValidationError raised for valid username: {username}\")\n\n        # Test invalid usernames\n        for username in invalid_usernames:\n            # This should fail, exposing the bug where the validator incorrectly allows newlines\n            with self.assertRaises(ValidationError):\n                self.ascii_validator(username)  # This should raise ValidationError if the bug is fixed\n            with self.assertRaises(ValidationError):\n                self.unicode_validator(username)  # This should raise ValidationError if the bug is fixed\n"
+  },
+  {
+    "phase": "validate_bug_with_llm",
+    "test_code": "from django.test import SimpleTestCase\nfrom django.core.exceptions import ValidationError\nfrom django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator\n\nclass UsernameValidatorTests(SimpleTestCase):\n    def setUp(self):\n        self.ascii_validator = ASCIIUsernameValidator()\n        self.unicode_validator = UnicodeUsernameValidator()\n\n    def test_username_validation_with_newline(self):\n        # Valid usernames\n        valid_usernames = [\n            \"valid_user\",\n            \"user.name\",\n            \"user+name\",\n            \"user-name\",\n            \"user@name\"\n        ]\n\n        # Invalid usernames (with trailing newline)\n        invalid_usernames = [\n            \"invalid_user\\n\",\n            \"user.name\\n\",\n            \"user+name\\n\",\n            \"user-name\\n\",\n            \"user@name\\n\"\n        ]\n\n        # Test valid usernames\n        for username in valid_usernames:\n            try:\n                self.ascii_validator(username)\n                self.unicode_validator(username)\n            except ValidationError:\n                self.fail(f\"ValidationError raised for valid username: {username}\")\n\n        # Test invalid usernames\n        for username in invalid_usernames:\n            # This should fail, exposing the bug where the validator incorrectly allows newlines\n            with self.assertRaises(ValidationError):\n                self.ascii_validator(username)  # This should raise ValidationError if the bug is fixed\n            with self.assertRaises(ValidationError):\n                self.unicode_validator(username)  # This should raise ValidationError if the bug is fixed\n",
+    "error": "test_username_validation_with_newline (test_c7v27un0.UsernameValidatorTests) ... FAIL\n\n======================================================================\nFAIL: test_username_validation_with_newline (test_c7v27un0.UsernameValidatorTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/testbed/tests/test_c7v27un0.py\", line 41, in test_username_validation_with_newline\n    self.ascii_validator(username)  # This should raise ValidationError if the bug is fixed\nAssertionError: ValidationError not raised\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\nTesting against Django installed in '/testbed/django'\nSkipping setup of unused database(s): default, other.\nSystem check identified no issues (0 silenced).\n",
+    "revealing": true,
+    "reason": "The test is designed to check if the username validators correctly reject usernames with trailing newlines. However, the failure indicates that the ASCIIUsernameValidator did not raise a ValidationError for the invalid username, which suggests that the validator is still allowing usernames with trailing newlines. This aligns with the reported bug in the issue ticket, confirming that the test is indeed revealing the bug. The test case is valid as it directly tests the functionality that is supposed to be fixed according to the issue ticket."
+  },
+  {
+    "phase": "terminating",
+    "mode": "passing_first",
+    "final_test": "from django.test import SimpleTestCase\nfrom django.core.exceptions import ValidationError\nfrom django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator\n\nclass UsernameValidatorTests(SimpleTestCase):\n    def setUp(self):\n        self.ascii_validator = ASCIIUsernameValidator()\n        self.unicode_validator = UnicodeUsernameValidator()\n\n    def test_username_validation_with_newline(self):\n        # Valid usernames\n        valid_usernames = [\n            \"valid_user\",\n            \"user.name\",\n            \"user+name\",\n            \"user-name\",\n            \"user@name\"\n        ]\n\n        # Invalid usernames (with trailing newline)\n        invalid_usernames = [\n            \"invalid_user\\n\",\n            \"user.name\\n\",\n            \"user+name\\n\",\n            \"user-name\\n\",\n            \"user@name\\n\"\n        ]\n\n        # Test valid usernames\n        for username in valid_usernames:\n            try:\n                self.ascii_validator(username)\n                self.unicode_validator(username)\n            except ValidationError:\n                self.fail(f\"ValidationError raised for valid username: {username}\")\n\n        # Test invalid usernames\n        for username in invalid_usernames:\n            # This should fail, exposing the bug where the validator incorrectly allows newlines\n            with self.assertRaises(ValidationError):\n                self.ascii_validator(username)  # This should raise ValidationError if the bug is fixed\n            with self.assertRaises(ValidationError):\n                self.unicode_validator(username)  # This should raise ValidationError if the bug is fixed\n",
+    "outcome": "success"
+  },
+  {
+    "meta": "cost_summary",
+    "total_cost": 0.003053549999999999
+  }
+]
