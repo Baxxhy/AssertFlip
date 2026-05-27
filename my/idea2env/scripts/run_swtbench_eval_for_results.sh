@@ -2,12 +2,13 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 RESULTS_DIR="${RESULTS_DIR:?RESULTS_DIR is required}"
 RUN_TAG="${RUN_TAG:-assertflip}"
 MODEL_NAME_FOR_EVAL="${MODEL_NAME_FOR_EVAL:-AssertFlipLocal_${RUN_TAG}}"
 PREDS_FILE="${PREDS_FILE:-$RESULTS_DIR/preds_${RUN_TAG}.jsonl}"
-SWT_BENCH_DIR="${SWT_BENCH_DIR:-/root/Baxxhy/BugReproduce/swt-bench}"
+SWT_BENCH_DIR="${SWT_BENCH_DIR:-$ROOT_DIR/upstream/swt-bench}"
 SWT_BENCH_REPO="${SWT_BENCH_REPO:-https://github.com/logic-star-ai/swt-bench.git}"
 SWT_DATASET_NAME="${SWT_DATASET_NAME:-princeton-nlp/SWE-bench_Verified}"
 SWT_SPLIT="${SWT_SPLIT:-test}"
@@ -19,7 +20,11 @@ EVAL_BUILD_MODE="${EVAL_BUILD_MODE:-api}"
 EVAL_FILTER_SWT="${EVAL_FILTER_SWT:-1}"
 INSTALL_SWT_BENCH="${INSTALL_SWT_BENCH:-1}"
 GITHUB_PROXY="${GITHUB_PROXY:-https://ghfast.top/}"
+GITHUB_MIRROR="${GITHUB_MIRROR:-$GITHUB_PROXY}"
 DATASET="${DATASET:-}"
+CONTRACT_BRT_CONSERVATIVE_MERGE="${CONTRACT_BRT_CONSERVATIVE_MERGE:-0}"
+CONTRACT_BRT_BASE_PREDS_FILE="${CONTRACT_BRT_BASE_PREDS_FILE:-}"
+CONTRACT_BRT_CONTRACT_PREDS_FILE="${CONTRACT_BRT_CONTRACT_PREDS_FILE:-$RESULTS_DIR/preds_${RUN_TAG}_contract_only.jsonl}"
 
 mkdir -p "$RESULTS_DIR"
 
@@ -32,13 +37,36 @@ echo "评测 workers: $EVAL_WORKERS"
 echo "评测 run_id: $EVAL_RUN_ID"
 echo "评测 build mode: $EVAL_BUILD_MODE"
 echo "GitHub 代理: $GITHUB_PROXY"
+echo "GitHub 镜像: $GITHUB_MIRROR"
+echo "保守合并 ECG rescue: $CONTRACT_BRT_CONSERVATIVE_MERGE"
+if [[ "$CONTRACT_BRT_CONSERVATIVE_MERGE" == "1" ]]; then
+  echo "裸 AssertFlip base preds: $CONTRACT_BRT_BASE_PREDS_FILE"
+  echo "Contract-BRT only preds: $CONTRACT_BRT_CONTRACT_PREDS_FILE"
+fi
 echo "========================================"
 
-rm -f "$PREDS_FILE"
-python "$ROOT_DIR/scripts/generate_preds_phases.py" \
-  --results-dir "$RESULTS_DIR" \
-  --out-file "$PREDS_FILE" \
-  --model-name "$MODEL_NAME_FOR_EVAL"
+if [[ "$CONTRACT_BRT_CONSERVATIVE_MERGE" == "1" ]]; then
+  if [[ -z "$CONTRACT_BRT_BASE_PREDS_FILE" || ! -f "$CONTRACT_BRT_BASE_PREDS_FILE" ]]; then
+    echo "CONTRACT_BRT_CONSERVATIVE_MERGE=1 需要有效的 CONTRACT_BRT_BASE_PREDS_FILE"
+    exit 4
+  fi
+  rm -f "$CONTRACT_BRT_CONTRACT_PREDS_FILE" "$PREDS_FILE"
+  "$PYTHON_BIN" "$ROOT_DIR/scripts/generate_preds_phases.py" \
+    --results-dir "$RESULTS_DIR" \
+    --out-file "$CONTRACT_BRT_CONTRACT_PREDS_FILE" \
+    --model-name "$MODEL_NAME_FOR_EVAL"
+  "$PYTHON_BIN" "$ROOT_DIR/scripts/merge_conservative_preds.py" \
+    --base-preds "$CONTRACT_BRT_BASE_PREDS_FILE" \
+    --contract-preds "$CONTRACT_BRT_CONTRACT_PREDS_FILE" \
+    --out-file "$PREDS_FILE" \
+    --model-name "$MODEL_NAME_FOR_EVAL"
+else
+  rm -f "$PREDS_FILE"
+  "$PYTHON_BIN" "$ROOT_DIR/scripts/generate_preds_phases.py" \
+    --results-dir "$RESULTS_DIR" \
+    --out-file "$PREDS_FILE" \
+    --model-name "$MODEL_NAME_FOR_EVAL"
+fi
 
 PRED_COUNT="$(grep -cve '^[[:space:]]*$' "$PREDS_FILE" || true)"
 echo "生成可评测 predictions 条数: $PRED_COUNT"
@@ -53,24 +81,29 @@ if [[ ! -d "$SWT_BENCH_DIR/.git" ]]; then
     exit 2
   fi
   echo "本地没有 SWT-Bench harness，开始 clone: $SWT_BENCH_REPO"
+  if [[ -n "$GITHUB_MIRROR" ]]; then
+    git config --global "url.${GITHUB_MIRROR%/}/https://github.com/.insteadOf" "https://github.com/" || true
+    echo "已设置 git clone 镜像重写: https://github.com/ -> ${GITHUB_MIRROR%/}/https://github.com/"
+  fi
   git clone "$SWT_BENCH_REPO" "$SWT_BENCH_DIR"
 fi
 
 if [[ "$INSTALL_SWT_BENCH" == "1" ]]; then
   echo "安装/更新 SWT-Bench Python 依赖: pip install -e $SWT_BENCH_DIR"
-  python -m pip install -e "$SWT_BENCH_DIR"
+  "$PYTHON_BIN" -m pip install -e "$SWT_BENCH_DIR"
 fi
 
 cd "$SWT_BENCH_DIR"
 
 export GITHUB_PROXY
+export GITHUB_MIRROR
 
 FILTER_FLAG=()
 if [[ "$EVAL_FILTER_SWT" == "1" ]]; then
   FILTER_FLAG=(--filter_swt)
 fi
 
-python -m src.main \
+"$PYTHON_BIN" -m src.main \
   --dataset_name "$SWT_DATASET_NAME" \
   --split "$SWT_SPLIT" \
   --predictions_path "$PREDS_FILE" \
@@ -92,7 +125,7 @@ fi
 
 cp "$REPORT_JSON" "$LOCAL_REPORT_JSON"
 
-python - "$REPORT_JSON" "$LOCAL_REPORT_TXT" "$DATASET" <<'PY'
+"$PYTHON_BIN" - "$REPORT_JSON" "$LOCAL_REPORT_TXT" "$DATASET" <<'PY'
 import json
 import sys
 from pathlib import Path

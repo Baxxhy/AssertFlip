@@ -12,5 +12,6 @@ export LIMIT="${LIMIT:-100}"
 export WORKERS="${WORKERS:-1}"
 export RUN_EVAL="${RUN_EVAL:-1}"
 export EVAL_WORKERS="${EVAL_WORKERS:-1}"
+export DOCKER_PULL_QUIET_TIMEOUT="${DOCKER_PULL_QUIET_TIMEOUT:-600}"
 
 exec "$ROOT_DIR/scripts/run_assertflip_full.sh"

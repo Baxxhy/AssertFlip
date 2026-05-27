@@ -4,3 +4,31 @@ __pycache__/
 *.egg-info/
 .DS_Store
 
+# Local secrets
+.env
+*.env
+scripts/.env
+
+# Experiment outputs
+assertflip_*_run/
+assertflip_*_run.bak_*/
+my/assertflip_*_run/
+evaluation_results_on_SWT_Bench/
+**/results/
+**/*summary*.json
+**/*summary*.csv
+**/*summary*.txt
+**/preds_*.jsonl
+**/llm_calls_*.jsonl
+**/attempts_*.json
+**/test_assertflip_*.py
+
+# Local generated data under experiment prototypes
+my/**/datasets/
+my/**/logs/
+my/**/generated_tests/
+my/**/contracts/
+my/**/build/
+my/**/*.egg-info/
+my/**/__pycache__/
+my/**/.env
